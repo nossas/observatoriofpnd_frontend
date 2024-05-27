@@ -1,0 +1,27 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.botaoExplore {
+    color: #555555;
+    font-weight: bold;
+}
+
+.botaoExploreSelected {
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url("/src/assets/fonts/avenir/AvenirNextLTPro-Regular.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url("/src/assets/fonts/avenir/AvenirNextLTPro-Demi.otf");
+    font-weight: bold;
+    font-style: normal;
+}

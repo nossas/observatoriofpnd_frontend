@@ -1,0 +1,142 @@
+{
+    "main": {
+        "header": {
+            "title": "Entenda",
+            "description": "FPND são áreas de florestas dentro de glebas públicas ainda não destinadas."
+        },
+        "body": [
+            {
+                "text": "Há **{{entendaFpndAreaTotalHa}}** de hectares de florestas públicas não-destinadas presentes n{{recortePrefixo}} {{recorteNome}}."
+            },
+            {
+                "text": "Isso equivale a **{{entendaFpndEquivalenciaFutebolQtd}}** de campos de futebol.",
+                "highlighted": true,
+                "icon": "campoDeFutebol"
+            }
+        ]
+    },
+    "details": [
+        {
+            "header": {
+                "title": "Florestas estaduais x federais",
+                "description": "As Florestas Públicas Não Destinadas (FPND) estão sob jurisdição dos estados ou do governo federal.",
+                "icon": "florestasEstaduaisxFederais"
+            },
+            "body": [
+                {
+                    "text": "N{{recortePrefixo}} {{recorteNome}}, **{{categoriaFpndEstadualAreaPer}}%** das FPND são estaduais, enquanto as federais representam **{{categoriaFpndFederalAreaPer}}%** do total de florestas.",
+                    "highlighted": true
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Alerta mensal de desmatamento",
+                "description": "No mês de {{ultimoMes}} foram desmatados **{{alertaMensalDesmatamentoUltimoMesHa}}** hectares.",
+                "icon": "alertaMensalDeDesmatamento"
+            },
+            "body": [
+                {
+                    "text": "**{{alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioPer}}%** {{alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao}} em relação ao mesmo mês do ano anterior",
+                    "highlighted": true,
+                    "icon": "grafico"
+                },
+                {
+                    "type": "GraficoAlertaDesmatamento"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Desmatamento",
+                "description": "A área desmatada total nas FPND n{{recortePrefixo}} {{recorteNome}} é de **{{desmatamentoAreaHa}}** de hectares",
+                "icon": "desmatamento"
+            },
+            "body": [
+                {
+                    "text": "Possui **{{desmatamentoFlorestaNativaHa}}** de hectares de floresta nativa.",
+                    "highlighted": true,
+                    "icon": "arvore"
+                },
+                {
+                    "type": "GraficoDesmatamentoRecorte"
+                },
+                {
+                    "text": "A área desmatada n{{recortePrefixo}} {{recorteNome}} aumentou **{{desmatamentoComparacaoPrimeiroAnoUltimoAnoPer}}%** de {{primeiroAno}} a {{ultimoAno}}."
+                },
+                {
+                    "type": "GraficoDesmatamentoAcumulado"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Estoque de carbono",
+                "description": "A FPND federal n{{recortePrefixo}} {{recorteNome}} estoca **{{estoqueCarbonoTon}}** de toneladas de carbono.",
+                "icon": "estoqueDeCarbono"
+            },
+            "body": [
+                {
+                    "text": "Isso equivale a **{{estoqueCarbonoEquivalenciaPesoTon}}** de toneladas de CO2 evitados na atmosfera.",
+                    "highlighted": true,
+                    "icon": "co2"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Biodiversidade",
+                "description": "As FPND federais n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndFederalMedia}}** espécies ameaçadas da fauna e flora amazônica.",
+                "icon": "biodiversidade"
+            },
+            "body": [
+                {
+                    "text": "N{{recortePrefixo}} **{{recorteNome}}**, a riqueza média das FPND é de **{{biodiversidadeFpndTodasMedia}}** espécies ameaçadas.",
+                    "highlighted": true,
+                    "icon": "biodiversidade"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "CAR (Cadastro Ambiental Rural)",
+                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares de terras com Cadastro Ambiental Rural (CAR).",
+                "icon": "car"
+            },
+            "body": [
+                {
+                    "text": "**{{carSobreposicaoFpndAreaPer}}%** da área de FPND n{{recortePrefixo}} {{recorteNome}} possui CAR sobrepostos. Isso equivale a **{{carSobreposicaoFpndEquivalenciaFutebolQtd}}** de campos de futebol.",
+                    "highlighted": true,
+                    "icon": "campoDeFutebol"
+                },
+                {
+                    "type": "AlertaGrilagem",
+                    "icon": "alertaGrilagem"
+                },
+                {
+                    "text": "A presença de CAR em áreas florestais podem indicar grilagem, ameaçando a conservação desses ecossistemas vitais."
+                },
+                {
+                    "text": "Nas FPNDs d{{recortePrefixo}} {{recorteNome}} existe uma razão de um hectare de desmatamento para **{{carComparacaoDesmatamento}}** hectares de CAR."
+                },
+                {
+                    "type": "GraficoCARSobreposicao"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Mineração",
+                "description": "A área de mineração total (industrial e garimpo) em 2022 nas FPNDs n{{recortePrefixo}} **{{recorteNome}}** corresponde a **{{mineracaoSobreposicaoFpndAreaHa}}** hectares.",
+                "icon": "mineracao"
+            },
+            "body": [
+                {
+                    "text": "Isso equivale a **{{mineracaoSobreposicaoFpndEquivalenciaFutebolQtd}}** campos de futebol.",
+                    "highlighted": true,
+                    "icon": "campoDeFutebol"
+                }
+            ]
+        }
+    ]
+}
