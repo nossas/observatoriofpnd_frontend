@@ -1,12 +1,14 @@
-import { Flex } from "antd"
+import { Flex, Typography } from "antd"
 import { Pie } from '@ant-design/plots';
 import { FC } from "react"
 
 type graficoDesmatamentoProps = {
     data: Array<object>
+    recorteTerritorial: String
 }
+const {Text} = Typography
 
-export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data}) => {
+export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, recorteTerritorial}) => {
 
     console.log('dataBolacha: ', data)
 
@@ -14,9 +16,13 @@ export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data}) 
         data: data,
         angleField: 'angleField',
         colorField: 'colorField',
+        innerRadius: 0.02,
         height: 200,
         width: 300,
-        title: "Gráfico Desmatamento Recorte",
+        /* title: {
+            title: `FPND n${recorteTerritorial}`,
+            titleFontSize: 12,
+        }, */
         scale: {
             color: {
               range: [
@@ -37,7 +43,8 @@ export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data}) 
     }
 
     return (
-        <Flex align='center' justify='center'>
+        <Flex vertical align='center' justify='center'>
+            <Text strong style={{fontSize:'14px'}}> FPND n{recorteTerritorial} </Text>
             <Pie {...config}/>
         </Flex>
     )

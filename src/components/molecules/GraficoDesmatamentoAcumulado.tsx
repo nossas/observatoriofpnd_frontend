@@ -14,7 +14,6 @@ export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> 
         yField: 'yField',
         width: 300,
         height: 200,
-        title:"Desmatamento Acumulado de 2013 a 2023",
         scale: {
             x: {
                 padding: .50,
@@ -24,7 +23,11 @@ export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> 
             radiusTopLeft: 2,
             radiusTopRight: 2,
             fill: '#d8952a'
-        }
+        },
+        title: {
+            title: "Desmatamento Acumulado de 2013 a 2023",
+            titleFontSize: 14,
+        },
     }
 
     return (

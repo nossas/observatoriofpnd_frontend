@@ -12,7 +12,7 @@ export const Root = () => {
 
     return (
         <Layout style={{minHeight: '100vh'}}>
-            <Sider collapsible trigger={null} collapsed={collapsed} collapsedWidth={50} width={370} theme="light">
+            <Sider collapsible trigger={null} collapsed={collapsed} collapsedWidth={50} width={374} theme="light">
                 <Flex justify="space-between" align="center" style={{padding: "12px"}}>
                     <Flex gap={10}>
                         {!collapsed &&

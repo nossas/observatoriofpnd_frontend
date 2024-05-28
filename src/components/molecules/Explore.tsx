@@ -172,9 +172,9 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false }) => {
                  />
             </Flex>
 
-            <Flex gap={10} vertical style={{ padding: 10 }}>
+            <Flex gap={5} vertical style={{ padding: 10 }}>
                 <p>{collapsed ? '' : 'Filtre por categoria'}</p>
-                <Flex gap={10} vertical={!!collapsed}>
+                <Flex gap={5} vertical={!!collapsed}>
                     <Button
                         collapsed={collapsed}
                         icon={florestaFederal ? <XDiamondFill/> : <XDiamond/>}

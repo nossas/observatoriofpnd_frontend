@@ -30,6 +30,11 @@ export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
                 layout: { justifyContent: 'center' },
             },
         },
+        style:{
+            radiusTopLeft: 2,
+            radiusTopRight: 2,
+            padding: '6px'
+        }
     };
     return (
         <Flex align='center' justify='center'>

@@ -44,7 +44,7 @@ const highlightedIcons = {
 
 export const Entenda = () => {
     const infoData = useLoaderData({from: '/'})
-    const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState(true)
 
     //console.log('infoData', infoData)
    
@@ -66,7 +66,7 @@ export const Entenda = () => {
                 <>
                     <Collapse
                         bordered={false}
-                        // defaultActiveKey="1"
+                        defaultActiveKey= {0}
                         expandIcon={getDoubleExpandIcon}
                         onChange={() => setIsActive(!isActive)}
                         expandIconPosition="end"
@@ -100,7 +100,6 @@ export const Entenda = () => {
 
                                     <Collapse
                                         bordered={false}
-                                        // defaultActiveKey="1"
                                         expandIcon={getExpandIcon}
                                         expandIconPosition="end"
                                         style={{ padding: 0 }}
@@ -139,7 +138,10 @@ export const Entenda = () => {
                                                                     break
                                                                 case 'GraficoDesmatamentoRecorte':
                                                                     if(infoData && infoData.desmatamentoGraficoFpndEstaduais){
-                                                                        component = <GraficoDesmatamentoRecorte key={key}  data={infoData.desmatamentoGraficoFpndEstaduais}/>
+                                                                        component = <GraficoDesmatamentoRecorte 
+                                                                            key={key}  
+                                                                            data={infoData.desmatamentoGraficoFpndEstaduais}                                                                            
+                                                                            recorteTerritorial={`${infoData.recortePrefixo} ${infoData.recorteNome}`}/>
                                                                     }
                                                                     break
                                                                 default:

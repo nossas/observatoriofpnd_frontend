@@ -15,7 +15,7 @@ const defaultLegend = {
     title : 'FPND',
     bins: [
         {
-            '#00FF00': 'Florestas'
+            '#008000': 'Florestas'
         }
     ],
 }

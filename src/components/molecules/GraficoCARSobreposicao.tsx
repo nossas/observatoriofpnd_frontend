@@ -15,6 +15,7 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
         colorField: 'colorField',
         width: 300,
         height: 200,
+        stack: true,
         scale: {
             color: {
               range: [
@@ -37,8 +38,10 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
                 fill: "#FFFFFF"
             }
         },
-        title: "Area CAR sobrepostos as FPND"
-
+        title: {
+            title: "Área de CAR sobrepostos às FPND",
+            titleFontSize: 14,
+        },
     }
 
     return (

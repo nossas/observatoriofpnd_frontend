@@ -1,24 +1,24 @@
 .ol-zoom {
     top: auto;
-    bottom: .5em;
-    left: 2;
+    bottom: 8px;
+    left: 8px;
 }
 
 .ol-zoom .ol-zoom-in {
-    width: 2em;
-    height: 2em;
+    width: 28px;
+    height: 28px;
     border-radius: 5px 5px 0 0;
 }
   
 .ol-zoom .ol-zoom-out {
-    width: 2em;
-    height: 2em;
+    width: 28px;
+    height: 28px;
     border-radius: 0 0 5px 5px;
 }
 
 .entenda {
-    top: 1em;
-    right: 1em;
+    top: 16px;
+    right: 16px;
     height: 100px;
     border-radius: 15px;
     /* width: 2em;
@@ -27,19 +27,17 @@
 
 .ajuda {
     top: auto;
-    bottom: .75em;
-    left: 3.3em;
-    width: 2em;
-    height: 2em;
+    bottom: 12px;
+    left: 44px;
+    width: 28px;
+    height: 28px;
 }
 
 .legenda {
     position: absolute;
     top: auto;
-    bottom: .5em;
-    left: 50%;
-    border-radius: 10px;
-    transform: translate(-50%, .2em);
-    margin: 0 auto,
+    bottom: 12px;
+    right: 378px;
+    border-radius: 10px;    
 
 }
