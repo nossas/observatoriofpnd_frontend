@@ -41,3 +41,13 @@
     border-radius: 10px;    
 
 }
+
+.legendaMobile {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: 10px;
+    min-width: 83px;
+    min-height: 30px;
+    border-radius: 6px;
+}

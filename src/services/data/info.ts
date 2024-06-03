@@ -6,11 +6,11 @@ const endpoint = `${import.meta.env.VITE_URL_INFO_DATA}`
 
 //TODO: remover camada
 
-export const getInfoData = async (camada: number | undefined, esfera: number | undefined, estados: Array<string> | undefined) => {
+export const getInfoData = async (camada: number | undefined, esfera: number | undefined, estados: Array<string> | undefined,  fpnd: string | undefined ) => {
     // console.log('getInfoData:', camada, esfera, estados)
     
     try {
-        const _url = _getUrl(camada, esfera, estados)
+        const _url = _getUrl(camada, esfera, estados, fpnd)
         console.log(_url)
         const res = await axios.get(_url)
         if (!res?.data) throw ('No data')
@@ -32,7 +32,7 @@ const _formatData = (data: any) => {
     return _data
 }
 
-const _getUrl = (camada: number | undefined, esfera: number | undefined, estados: Array<string> | undefined) => {
+const _getUrl = (camada: number | undefined, esfera: number | undefined, estados: Array<string> | undefined, fpnd: string | undefined ) => {
     let url = endpoint
 
     if (camada!==undefined) {
@@ -52,6 +52,9 @@ const _getUrl = (camada: number | undefined, esfera: number | undefined, estados
             }
             url += `estados=${estados[i]}`
         }
+    }
+    if (fpnd!==undefined) {
+        url += `&fpnd=${fpnd}`
     }
 
     return encodeURI(url)

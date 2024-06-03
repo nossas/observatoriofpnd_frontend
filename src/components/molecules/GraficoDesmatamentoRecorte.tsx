@@ -10,7 +10,7 @@ const {Text} = Typography
 
 export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, recorteTerritorial}) => {
 
-    console.log('dataBolacha: ', data)
+    // console.log('dataBolacha: ', data)
 
     const config = {
         data: data,

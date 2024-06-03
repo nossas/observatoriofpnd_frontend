@@ -5,11 +5,12 @@ import { z } from 'zod'
 
 export const Route = createFileRoute('/')({
     // component: Mapa,
-    loaderDeps: ({ search: { camada, esfera, estados } }) => ({ camada, esfera, estados }),
-    loader: ({ deps: { camada, esfera, estados } }) => getInfoData(camada, esfera, estados),
+    loaderDeps: ({ search: { camada, esfera, estados, fpnd } }) => ({ camada, esfera, estados, fpnd}),
+    loader: ({ deps: { camada, esfera, estados, fpnd } }) => getInfoData(camada, esfera, estados ,fpnd),
     validateSearch: z.object({
         camada: z.number().optional(),
         esfera: z.number().optional(),
-        estados: z.array(z.string()).optional()
+        estados: z.array(z.string()).optional(),
+        fpnd: z.string().optional()
     }),
 })

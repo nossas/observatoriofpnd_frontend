@@ -20,6 +20,8 @@ export const customTheme = {
         //botões
         Button:{
           defaultBorderColor: '#555555',
+          controlHeight: 24,
+          onlyIconSize: 24,
           algorithm: true, // Enable algorithm ou algorithm: theme.darkAlgorithm podemos passar o algorithm
         }
       }

@@ -1,5 +1,6 @@
 export { Ajuda } from './Ajuda'
 export { Entenda } from './Entenda'
+export { EntendaMobile } from './EntendaMobile'
 export { Explore } from './Explore'
 export { GraficoAlertaDesmatamento } from './GraficoAlertaDesmatamento'
 export { GraficoCARSobreposicao } from './GraficoCARSobreposicao'

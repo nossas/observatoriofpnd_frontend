@@ -12,6 +12,22 @@ p {
     font-weight: bold;
 }
 
+.ant-drawer-close {
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    position: absolute;
+}
+
+.ant-btn.ant-btn-icon-only {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+}
+.ant-collapse-header .ant-collapse-arrow {
+    display: none;
+  }
+
 @font-face {
     font-family: 'Avenir';
     src: url("/src/assets/fonts/avenir/AvenirNextLTPro-Regular.otf");
