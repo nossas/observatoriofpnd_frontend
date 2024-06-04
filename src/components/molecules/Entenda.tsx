@@ -50,7 +50,7 @@ export const Entenda = () => {
    
     const getDoubleExpandIcon = useCallback((panelProps: any) => {
         return (
-            panelProps.isActive ? <ChevronDoubleUp /> : <ChevronDoubleDown />
+            panelProps.isActive ? <ChevronDoubleUp style={{fontSize:'16px'}}/> : <ChevronDoubleDown style={{fontSize:'16px'}} />
         )
     }, [])
 
@@ -72,8 +72,8 @@ export const Entenda = () => {
                         expandIconPosition="end"
                         style={{
                             background: "white",
-                            borderRadius: isActive ? "10px 10px 0 0" : undefined,
-                            maxHeight: '92vh',
+                            borderRadius: isActive ? "12px 12px 0 0" : undefined,
+                            maxHeight: '94vh',
                             overflowY: 'auto',
                             width: 354,
                         }}
@@ -82,9 +82,10 @@ export const Entenda = () => {
                                 <InfoHeader
                                     title={entenda.main.header.title}
                                     description={substitute(entenda.main.header.description, infoData)}
+                                    padding='0px 0px 0px 8px'
                                 />,
                             children: 
-                                <Flex gap={5} vertical>
+                                <Flex gap={24} vertical >
                                     {entenda.main.body.reduce((children: any, child: any, key: number) => {
                                         return children.concat(
                                             <InfoContent
@@ -114,7 +115,7 @@ export const Entenda = () => {
                                                         icon={headerIcons[item.header.icon]}
                                                     />,
                                                 children:
-                                                    <Flex gap={5} vertical>
+                                                    <Flex gap={24} vertical>
                                                         {item?.body.reduce((children: any, child: any, key: number) => {
                                                             let component = undefined
                                                             switch (child?.type){

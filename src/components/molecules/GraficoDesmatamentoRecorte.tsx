@@ -8,9 +8,14 @@ type graficoDesmatamentoProps = {
 }
 const {Text} = Typography
 
+interface DataItem {
+    angleField: number;
+    colorField: string;
+  }
+
+  
 export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, recorteTerritorial}) => {
 
-    // console.log('dataBolacha: ', data)
 
     const config = {
         data: data,
@@ -19,10 +24,6 @@ export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, r
         innerRadius: 0.02,
         height: 200,
         width: 300,
-        /* title: {
-            title: `FPND n${recorteTerritorial}`,
-            titleFontSize: 12,
-        }, */
         scale: {
             color: {
               range: [
@@ -39,7 +40,13 @@ export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, r
             text: ({angleField}: {angleField: string | number}) => {
                 return angleField + '%'
             }
-        }
+        },
+        tooltip: (d: DataItem) => {
+            return {
+            value: `${d.colorField}: ${d.angleField}%`,
+          }}
+
+
     }
 
     return (

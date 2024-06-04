@@ -1,7 +1,8 @@
-import { Flex } from "antd"
+import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
 
+const {Text} = Typography
 
 type graficoAlertaProps = {
     data: Array<object>
@@ -17,7 +18,6 @@ export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
         height: 200,
         width: 300,
         group: true,
-        title: "Área desmatada",
         scale: {
             color: {
               range: [
@@ -37,7 +37,8 @@ export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
         }
     };
     return (
-        <Flex align='center' justify='center'>
+        <Flex vertical align='center' justify='center'>
+            <Text strong style={{fontSize:'14px'}}> Área desmatada </Text>
             <Column {...config}/>
         </Flex>
     )

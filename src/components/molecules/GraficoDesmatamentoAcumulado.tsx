@@ -1,10 +1,19 @@
-import { Flex } from "antd"
+import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
+
+const {Text} = Typography
+
 
 type graficoDesmatamentoAcumuladoProps = {
     data: Array<object>
 }
+
+interface DataItem {
+    xField: number;
+    yField: number;
+  }
+
 
 export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> = ({data}) => {
 
@@ -23,15 +32,17 @@ export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> 
             radiusTopLeft: 2,
             radiusTopRight: 2,
             fill: '#d8952a'
-        },
-        title: {
-            title: "Desmatamento Acumulado de 2013 a 2023",
-            titleFontSize: 14,
-        },
+        }, 
+        tooltip: (d: DataItem) => {
+            return {
+            value: `${d.yField} ha`,
+          }}
+
     }
 
     return (
-        <Flex align='center' justify='center'>
+        <Flex vertical align='center' justify='center'>
+            <Text strong style={{fontSize:'14px'}}>Desmatamento Acumulado de 2013 a 2023</Text>
             <Column {...config}/>
         </Flex>
     )

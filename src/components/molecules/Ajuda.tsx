@@ -10,6 +10,7 @@ export const Ajuda = () => {
             icon={<QuestionCircleFilled/>}
             target="_blank"
             type="default"
+            style={{width:'32px', height:'32px'}}
         />
     )
 }

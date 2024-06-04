@@ -1,6 +1,8 @@
-import { Flex } from "antd"
+import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
+
+const {Text} = Typography
 
 type graficoCARprops = {
     data: Array<object>
@@ -38,14 +40,11 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
                 fill: "#FFFFFF"
             }
         },
-        title: {
-            title: "Área de CAR sobrepostos às FPND",
-            titleFontSize: 14,
-        },
     }
 
     return (
-        <Flex align='center' justify='center'>
+        <Flex vertical align='center' justify='center'>
+            <Text strong style={{fontSize:'14px'}}>Área de CAR sobrepostos às FPND</Text>
             <Column {...config}/>
         </Flex>
     )

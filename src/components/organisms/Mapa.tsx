@@ -10,7 +10,7 @@ import "rlayers/control/layers.css"
 import "assets/styles/mapa.css"
 import { Pixel } from "ol/pixel"
 import { fromLonLat } from 'ol/proj';
-
+import { DoubleClickZoom, Interaction } from 'ol/interaction'
 
 const projection = import.meta.env.VITE_DEFAULT_PROJECTION
 const urlTiles = import.meta.env.VITE_URL_GOOGLE_MAP_API_TERRAIN
@@ -32,8 +32,8 @@ const extents = {
     "AP": [-52.304820866959, -0.34670336968225535, -49.90229333146293, 4.195350111586374],
     "MT": [-61.49896585572995, -16.29340772910929, -53.420729312708026, -8.801770729174061],
     "RR": [-62.00060628713821, -0.3333336122238127, -59.29093707949849, 4.3929018134876925],
-    "AC": [-73.79487377262059, -10.99284924444386, -67.45660048523425, -7.116698090502462]}
-
+    "AC": [-73.79487377262059, -10.99284924444386, -67.45660048523425, -7.116698090502462]
+}
 
 const { useBreakpoint } = Grid
 
@@ -49,7 +49,7 @@ export const Mapa = () => {
     const { camada, esfera, estados } = useSearch({ from: '/' })
     const mapRef = useRef<any>(null)
     const legendData = camada!==undefined && mapData?.layersLegends ? mapData?.layersLegends[Camadas[camada]] : defaultLegend
-    const [pixelClicked, setPixelClicked] = useState<Pixel | null> (null)
+    const [ pixelClicked, setPixelClicked ] = useState<Pixel | null> (null)
     
     useEffect(() => {
         if (mapRef.current ) {
@@ -78,7 +78,15 @@ export const Mapa = () => {
         }
     }, [mapRef, estados]);
 
-
+    useEffect(() => {
+        if (mapRef.current ) {
+            mapRef.current.ol.getInteractions().getArray().forEach(function(interaction : Interaction) {
+                if (interaction instanceof DoubleClickZoom) {
+                    mapRef.current.ol.removeInteraction(interaction);
+                }
+            });
+        }
+    }, [mapRef])
 
     return (
         <RMap
@@ -106,7 +114,7 @@ export const Mapa = () => {
                 pixelClicked={pixelClicked}
             />
             
-            <RControl.RCustom className={breakpoints.xs ? "legendaMobile":"legenda"}>
+            <RControl.RCustom className={breakpoints.xs ? "legendaMobile" : "legenda"}>
                 <Legenda 
                     title={legendData.title}
                     bins = {legendData.bins}
@@ -114,8 +122,8 @@ export const Mapa = () => {
             </RControl.RCustom>
 
             <RControl.RCustom className="entenda">
-                {  !breakpoints.xs && (
-                        <Entenda />
+                { !breakpoints.xs && (
+                    <Entenda />
                 )}
             </RControl.RCustom>
 
@@ -124,11 +132,10 @@ export const Mapa = () => {
                     <Ajuda />
                 )}
             </RControl.RCustom>
-                {
-                    !breakpoints.xs && (
-                        <RControl.RZoom/>
-                    )}
-            
+
+            { !breakpoints.xs && (
+                <RControl.RZoom/>
+            )}            
         </RMap>
     )
 }

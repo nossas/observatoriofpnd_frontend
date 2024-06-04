@@ -4,7 +4,8 @@ p {
 }
 
 .botaoExplore {
-    color: #555555;
+    color: #CCCCCC;
+    background-color: #FFFFFF;
     font-weight: bold;
 }
 
@@ -24,6 +25,11 @@ p {
     height: 24px;
     border-radius: 6px;
 }
+
+.ant-btn{
+    padding-left: 8px;
+}
+
 .ant-collapse-header .ant-collapse-arrow {
     display: none;
   }

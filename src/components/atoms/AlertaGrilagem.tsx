@@ -10,8 +10,9 @@ type alertaGrilagemProps = {
 export const AlertaGrilagem: FC<alertaGrilagemProps> = ({icon}) => {
 
     return (
-        <Flex>
-            <Text strong>{icon} Alerta grilagem!</Text>
+        <Flex gap={8} align={'baseline'}> 
+            <Text >{icon}</Text>
+            <Text strong style={{fontSize:"16px"}}>Alerta grilagem!</Text>
         </Flex>
     )
 }

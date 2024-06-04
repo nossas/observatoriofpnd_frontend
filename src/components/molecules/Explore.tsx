@@ -18,11 +18,12 @@ import {
     XDiamondFill,
 } from 'components/atoms'
 import { Camadas, Esferas } from "services/data";
-import { Divider, Flex, Select, Grid } from "antd"
+import { Divider, Flex, Select, Grid, Typography } from "antd"
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from "@tanstack/react-router";
 import estados from "assets/data/estados.json";
 
+const { Text } = Typography
 const { useBreakpoint } = Grid
 
 type ExploreProps = {
@@ -36,9 +37,8 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
     const [ maisDesmatadasSelected, setMaisDesmatadasSelected ] = useState<boolean>(false)
     const [ selectedAction, setSelectedAction ] = useState<number>(-1)
     const breakpoints = useBreakpoint()
-    const [gapXs, setGapXs] = useState<number>(5)
+    const [gapXs, setGapXs] = useState<number>(8)
     const navigate = useNavigate({ from: '/' })
-
 
     useEffect(()=>{
         if(breakpoints.xs){
@@ -163,8 +163,8 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
 
     return (
         <>
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: 10 }}>
-                <p>{collapsed ? '' : 'Conheça as florestas públicas da Amazônia'}</p>
+            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px' }}>
+                <Text>{collapsed ? '' : 'Conheça as florestas públicas da Amazônia'}</Text>
                 
                 <Button
                     collapsed={collapsed}
@@ -184,8 +184,9 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                  />
             </Flex>
 
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: 10 }}>
-                <p>{collapsed ? '' : 'Filtre por categoria'}</p>
+            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px' }}>
+                <Text>{collapsed ? '' : 'Filtre por categoria'}</Text>
+
                 <Flex gap={gapXs} vertical={vertical ? !!collapsed : vertical}>
                     <Button
                         collapsed={collapsed}
@@ -195,7 +196,7 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                         onClick={categoriaFederais}
                         className={florestaFederal ? "botaoExploreSelected" : "botaoExplore" }
                     />
-
+                
                     <Button
                         collapsed={collapsed}
                         icon={florestaEstadual ? <DiamondFill/> : <Diamond/>}
@@ -203,14 +204,16 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                         type={florestaEstadual ? "primary" : "default"}
                         onClick={categoriaEstaduais}
                         className={florestaEstadual ? "botaoExploreSelected" : "botaoExplore" }
+                        style={{paddingLeft:'8px'}}
                     />
                 </Flex> 
             </Flex>
 
             { !collapsed && ( // desativa Select quando menu esta collapsado
                 <>
-                    <Flex vertical gap={gapXs} style={{padding: 10}}>
-                        <p>Selecione o recorte territorial</p>
+                    <Flex vertical gap={gapXs} style={{padding: '8px 8px 8px 16px'}}>
+                        <Text>Selecione o recorte territorial</Text>
+                
                         <Select 
                             mode="multiple" 
                             allowClear
@@ -223,12 +226,11 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                 </>
             )}
 
-            <Divider type={vertical ? 'horizontal' : 'vertical'}/>
+            <Divider type={vertical ? 'horizontal' : 'vertical'} style={{marginTop: '10px', marginBottom: '10px'}}/>
             
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: 10 }}>
-                <p>{collapsed ? "" : "Veja no mapa" }</p>
-            </Flex>
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: 10 }}>
+            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px'}}>
+                <Text>{collapsed ? "" : "Veja no mapa" }</Text>
+
                 { actions.map((action, index) => (
                     <Button
                         key={index}

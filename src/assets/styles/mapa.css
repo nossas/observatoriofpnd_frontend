@@ -1,18 +1,18 @@
 .ol-zoom {
     top: auto;
-    bottom: 8px;
+    bottom: 12px;
     left: 8px;
 }
 
 .ol-zoom .ol-zoom-in {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 5px 5px 0 0;
 }
   
 .ol-zoom .ol-zoom-out {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 0 0 5px 5px;
 }
 
@@ -29,16 +29,16 @@
     top: auto;
     bottom: 12px;
     left: 44px;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
 }
 
 .legenda {
     position: absolute;
     top: auto;
     bottom: 12px;
-    right: 378px;
-    border-radius: 10px;    
+    right: 386px;
+    border-radius: 10px;  
 
 }
 

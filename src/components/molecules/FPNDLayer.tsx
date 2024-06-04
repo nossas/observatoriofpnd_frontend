@@ -6,7 +6,7 @@ import { MVT } from "ol/format";
 import { RLayerVectorTile} from "rlayers";
 import { useNavigate } from "@tanstack/react-router";
 import { Pixel } from "ol/pixel";
-import { Modal } from "antd";
+import { Modal, Button } from "antd";
 
 import {
     RStyleArray,
@@ -65,7 +65,7 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({ mapData, camada, esfera, estados
         const defaultFillColor = 'green';
         const defaultStrokeColor = 'gray';
         const highlightFillColor = '#daa520';
-        const highlightStrokeColor = '#080808';
+        const highlightStrokeColor = '#08080899';
         const filterColor = "#f5a7c140";
 
         let colorFill = getColor(codigo, defaultFillColor, highlightFillColor);
@@ -79,7 +79,7 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({ mapData, camada, esfera, estados
         return (
             <>
                 <RStyle>
-                    <RStroke color={colorStroke} width={2} />
+                    <RStroke color={colorStroke} width={1} />
                     <RFill color={colorFill} />
                 </RStyle>
             </>
@@ -130,8 +130,11 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({ mapData, camada, esfera, estados
                 visible={isModalVisible}
                 onOk={handleConfirm}
                 onCancel={handleCancel}
-                okText="Confirmar"
-                cancelText="Cancelar"
+                footer={[
+                    <Button key="ok" type="primary" onClick={handleConfirm}>
+                      Analisar
+                    </Button>
+                  ]}
             >
                 <p>Deseja analisar a FPND selecionada?</p>
             </Modal>

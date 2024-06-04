@@ -1,4 +1,4 @@
-import { theme } from 'antd'
+import { Drawer, theme } from 'antd'
 
 export const customTheme = {
   //Tokens = Global tokens modificar de um vai modificar todos os componentes
@@ -15,15 +15,22 @@ export const customTheme = {
       colorBgContainer: '#f5f4f0',
       colorFill: '#F5F4F0',
       fontFamily: "Avenir",
-      //componentes
-      components:{
-        //botões
-        Button:{
-          defaultBorderColor: '#555555',
-          controlHeight: 24,
-          onlyIconSize: 24,
-          algorithm: true, // Enable algorithm ou algorithm: theme.darkAlgorithm podemos passar o algorithm
-        }
+
+
+    },
+    //componentes
+    components:{
+      Button:{
+        defaultBg: '#FFFFFF',
+      },
+      Select:{
+        selectorBg: '#FFFFFF',
+        colorBorder: '#999999',
+        colorTextPlaceholder: '#999999',
+        optionSelectedBg: '#F5F4F0'
+      },
+      Drawer:{
+        paddingLG: 0,
       }
     },
 }
