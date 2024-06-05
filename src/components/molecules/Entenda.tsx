@@ -17,10 +17,12 @@ import {
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { ChevronDoubleDown, ChevronDoubleUp, InfoContent, InfoHeader, Markdown } from 'components/atoms'
 import { GraficoAlertaDesmatamento, GraficoCARSobreposicao, GraficoDesmatamentoAcumulado, GraficoDesmatamentoRecorte } from '.'
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { useLoaderData } from '@tanstack/react-router'
 import { substitute } from 'services/utils'
 import entenda from 'assets/data/entenda.json'
+import { useBusiness } from "services/business"
+
 
 const url = import.meta.env.VITE_URL_COMO_AGIR
 const highLitghtIconStyle = {color:"#d8952a", fontSize:"32px"}
@@ -44,8 +46,8 @@ const highlightedIcons = {
 
 export const Entenda = () => {
     const infoData = useLoaderData({from: '/'})
-    const [isActive, setIsActive] = useState(true)
-
+    // const [isActive, setIsActive] = useState(true)
+    const { entendaIsOpen, setEntendaIsOpen } = useBusiness()
     //console.log('infoData', infoData)
    
     const getDoubleExpandIcon = useCallback((panelProps: any) => {
@@ -63,17 +65,16 @@ export const Entenda = () => {
     return (
         <>
             {infoData && (
-                <>
+                <Flex vertical style={{maxHeight: 'calc(100vh - 28px)', padding: '0px 0px'}}>
                     <Collapse
                         bordered={false}
                         defaultActiveKey= {0}
                         expandIcon={getDoubleExpandIcon}
-                        onChange={() => setIsActive(!isActive)}
+                        onChange={() => setEntendaIsOpen(!entendaIsOpen)}
                         expandIconPosition="end"
                         style={{
                             background: "white",
-                            borderRadius: isActive ? "12px 12px 0 0" : undefined,
-                            maxHeight: '94vh',
+                            borderRadius: entendaIsOpen ? "12px 12px 0 0" : undefined,                    
                             overflowY: 'auto',
                             width: 354,
                         }}
@@ -167,7 +168,7 @@ export const Entenda = () => {
                         }]}
                     />
                     <Flex style={{backgroundColor:"white" , borderRadius:"0 0 10px 10px",padding: "10px"}}>
-                        {isActive && (
+                        {entendaIsOpen && (
                             <Button
                                 href={url}
                                 ghost
@@ -179,7 +180,7 @@ export const Entenda = () => {
                             </Button>
                         )}
                     </Flex>
-                </>
+                </Flex>
             )}
         </>
     )

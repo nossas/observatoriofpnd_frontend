@@ -180,7 +180,6 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                     label="FPND mais desmatadas no último mês" 
                     type={maisDesmatadasSelected ? "primary" : "default"}
                     onClick={maisDesmatadas}
-                    className={maisDesmatadasSelected ? "botaoExploreSelected" : "botaoExplore" }
                  />
             </Flex>
 
@@ -194,7 +193,6 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                         label="Florestas Federais"
                         type={florestaFederal ? "primary" : "default"} 
                         onClick={categoriaFederais}
-                        className={florestaFederal ? "botaoExploreSelected" : "botaoExplore" }
                     />
                 
                     <Button
@@ -203,8 +201,6 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                         label="Florestas Estaduais"
                         type={florestaEstadual ? "primary" : "default"}
                         onClick={categoriaEstaduais}
-                        className={florestaEstadual ? "botaoExploreSelected" : "botaoExplore" }
-                        style={{paddingLeft:'8px'}}
                     />
                 </Flex> 
             </Flex>
@@ -239,7 +235,6 @@ export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) 
                         icon={action.icon}
                         label={action.label}
                         onClick={() => onSelectAction(index)}
-                        className={index === selectedAction ? "botaoExploreSelected" : "botaoExplore" }
                     />
                 ))} 
             </Flex>

@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useState } from "react"
 import { getMapData } from "services/data"
 
 export const BusinessProvider = ({ children }: { children: ReactNode }) => {
+    const [ entendaIsOpen, setEntendaIsOpen ] = useState(defaultState.entendaIsOpen)
     const [ mapCenter, setMapCenter ] = useState(defaultState.mapCenter)
     const [ mapData, setMapData ] = useState(defaultState.mapData)
     const [ mapZoom, setMapZoom ] = useState(defaultState.mapZoom)
@@ -19,9 +20,11 @@ export const BusinessProvider = ({ children }: { children: ReactNode }) => {
     return (
         <BusinessContext.Provider
             value={{
+                entendaIsOpen,
                 mapCenter,
                 mapData,
                 mapZoom,
+                setEntendaIsOpen,
                 setMapCenter,
                 setMapZoom,
             }}

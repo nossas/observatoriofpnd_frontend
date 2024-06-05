@@ -17,12 +17,11 @@
 }
 
 .entenda {
+    position: absolute;
     top: 16px;
     right: 16px;
-    height: 100px;
     border-radius: 15px;
-    /* width: 2em;
-    height: 2em; */
+    height: 100;
 }
 
 .ajuda {
@@ -50,4 +49,13 @@
     min-width: 83px;
     min-height: 30px;
     border-radius: 6px;
+}
+
+.legendaCanto {
+    position: absolute;
+    top: auto;
+    bottom: 12px;
+    right: 16px;
+    border-radius: 10px;  
+
 }

@@ -15,6 +15,7 @@ import { DoubleClickZoom, Interaction } from 'ol/interaction'
 const projection = import.meta.env.VITE_DEFAULT_PROJECTION
 const urlTiles = import.meta.env.VITE_URL_GOOGLE_MAP_API_TERRAIN
 
+
 const defaultLegend = {
     title : 'FPND',
     bins: [
@@ -40,6 +41,7 @@ const { useBreakpoint } = Grid
 export const Mapa = () => {
     const breakpoints = useBreakpoint()
     const {
+        entendaIsOpen,
         mapCenter,
         mapData,
         mapZoom,
@@ -107,6 +109,7 @@ export const Mapa = () => {
             <RLayerTile url={urlTiles} />
 
             <FPNDLayer 
+                zIndex={7}
                 mapData={mapData} 
                 camada={camada!==undefined ? Camadas[camada] : ''}
                 esfera={esfera!==undefined ? Esferas[esfera] : ''}
@@ -114,7 +117,7 @@ export const Mapa = () => {
                 pixelClicked={pixelClicked}
             />
             
-            <RControl.RCustom className={breakpoints.xs ? "legendaMobile" : "legenda"}>
+            <RControl.RCustom className={breakpoints.xs ? "legendaMobile" : entendaIsOpen ? "legenda" : "legendaCanto"}>
                 <Legenda 
                     title={legendData.title}
                     bins = {legendData.bins}

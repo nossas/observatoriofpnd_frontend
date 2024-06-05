@@ -21,13 +21,16 @@ export const customTheme = {
     //componentes
     components:{
       Button:{
+        fontWeight: 'bold',
         defaultBg: '#FFFFFF',
+        defaultColor: '#555555',
       },
       Select:{
-        selectorBg: '#FFFFFF',
         colorBorder: '#999999',
-        colorTextPlaceholder: '#999999',
-        optionSelectedBg: '#F5F4F0'
+        colorText: '#555555',
+        colorTextPlaceholder: '#555555',
+        optionSelectedBg: '#F5F4F0',
+        selectorBg: '#FFFFFF',
       },
       Drawer:{
         paddingLG: 0,
