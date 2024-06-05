@@ -1,4 +1,4 @@
-import { Drawer, theme } from 'antd'
+import { theme } from 'antd'
 
 export const customTheme = {
   //Tokens = Global tokens modificar de um vai modificar todos os componentes

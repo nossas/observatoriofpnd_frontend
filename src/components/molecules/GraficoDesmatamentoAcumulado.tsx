@@ -1,6 +1,7 @@
-import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
+import { formatNumber } from "services/utils"
 import { FC } from "react"
+import { Flex, Typography } from "antd"
 
 const {Text} = Typography
 
@@ -28,6 +29,13 @@ export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> 
                 padding: .50,
             },
         },
+        axis: {
+            y: {
+                title: 'Hectare',
+                titleSpacing: -5,
+                labelFormatter: '~s' ,
+            },
+        },
         style: {
             radiusTopLeft: 2,
             radiusTopRight: 2,
@@ -35,7 +43,7 @@ export const GraficoDesmatamentoAcumulado:FC<graficoDesmatamentoAcumuladoProps> 
         }, 
         tooltip: (d: DataItem) => {
             return {
-            value: `${d.yField} ha`,
+            value: `${formatNumber(d.yField, 2)} ha`,
           }}
 
     }

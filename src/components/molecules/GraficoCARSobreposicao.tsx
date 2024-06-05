@@ -1,8 +1,15 @@
 import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
+import { formatNumber } from "services/utils"
 
 const {Text} = Typography
+
+interface DataItem {
+    xField: number;
+    yField: number;
+  }
+
 
 type graficoCARprops = {
     data: Array<object>
@@ -22,7 +29,16 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
             color: {
               range: [
                 '#0f5427',
-                '#d8952a']}},
+                '#d8952a']
+            }
+        },
+        axis: {
+            y: {
+                title: 'Hectare',
+                titleSpacing: -5,
+                labelFormatter: '~s' ,
+            },
+        },
         legend: {
             color: {
                 title: false,
@@ -34,12 +50,10 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
             radiusTopLeft: 5,
             radiusTopRight: 5,
         },
-        label:{
-            text: 'yField',
-            style:{
-                fill: "#FFFFFF"
-            }
-        },
+        tooltip: (d: DataItem) => {
+            return {
+            value: `${formatNumber(d.yField, 2)} ha`,
+          }}
     }
 
     return (

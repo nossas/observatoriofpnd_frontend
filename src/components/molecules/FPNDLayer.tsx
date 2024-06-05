@@ -63,7 +63,7 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({ mapData, camada, esfera, estados
 
         // Definindo cores como constantes
         const defaultFillColor = 'green';
-        const defaultStrokeColor = 'gray';
+        const defaultStrokeColor = '#99999999';
         const highlightFillColor = '#daa520';
         const highlightStrokeColor = '#08080899';
         const filterColor = "#f5a7c140";

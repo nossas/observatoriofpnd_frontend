@@ -100,7 +100,7 @@
         {
             "header": {
                 "title": "CAR (Cadastro Ambiental Rural)",
-                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares de terras com Cadastro Ambiental Rural (CAR).",
+                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares  de Cadastro Ambiental Rural (CAR), **irregulares**, sobrepostos em Florestas Públicas Não Destinadas.",
                 "icon": "car"
             },
             "body": [
@@ -117,7 +117,7 @@
                     "text": "A presença de CAR em áreas florestais podem indicar grilagem, ameaçando a conservação desses ecossistemas vitais."
                 },
                 {
-                    "text": "Nas FPNDs d{{recortePrefixo}} {{recorteNome}} existe uma razão de um hectare de desmatamento para **{{carComparacaoDesmatamento}}** hectares de CAR."
+                    "text": "Nas florestas públicas não destinadas d{{recortePrefixo}} {{recorteNome}} existe uma razão de um hectare de desmatamento para **{{carComparacaoDesmatamento}}** hectares de CAR."
                 },
                 {
                     "type": "GraficoCARSobreposicao"
