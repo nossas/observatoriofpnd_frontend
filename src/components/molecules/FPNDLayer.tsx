@@ -93,7 +93,7 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({ mapData, camada, esfera, estados
     }, [camada, esfera, estados, selectedFeatureCode]);
     
     useEffect(() => {
-        navigate({ search: (prev) => ({ ...prev, fpnd: selectedFeatureCode || undefined }) });
+        navigate({ search: (prev: any) => ({ ...prev, fpnd: selectedFeatureCode || undefined }) } as any);
     }, [selectedFeatureCode]);
 
     useEffect(() => {
