@@ -32,7 +32,7 @@
         {
             "header": {
                 "title": "Alerta mensal de desmatamento",
-                "description": "No mês de {{ultimoMes}} foram desmatados **{{alertaMensalDesmatamentoUltimoMesHa}}** hectares.",
+                "description": "No mês de {{ultimoMes}} foram desmatados **{{alertaMensalDesmatamentoUltimoMesHa}}** hectares em FPND {{esfera}}.",
                 "icon": "alertaMensalDeDesmatamento"
             },
             "body": [
@@ -49,7 +49,7 @@
         {
             "header": {
                 "title": "Desmatamento",
-                "description": "A área desmatada total nas FPND n{{recortePrefixo}} {{recorteNome}} é de **{{desmatamentoAreaHa}}** de hectares",
+                "description": "A área desmatada total nas FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} é de **{{desmatamentoAreaHa}}** de hectares",
                 "icon": "desmatamento"
             },
             "body": [
@@ -72,7 +72,7 @@
         {
             "header": {
                 "title": "Estoque de carbono",
-                "description": "A FPND federal n{{recortePrefixo}} {{recorteNome}} estoca **{{estoqueCarbonoTon}}** de toneladas de carbono.",
+                "description": "As FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} estocam **{{estoqueCarbonoTon}}** de toneladas de carbono.",
                 "icon": "estoqueDeCarbono"
             },
             "body": [
@@ -86,7 +86,7 @@
         {
             "header": {
                 "title": "Biodiversidade",
-                "description": "As FPND federais n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndFederalMedia}}** espécies ameaçadas da fauna e flora amazônica.",
+                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndFederalMedia}}** espécies ameaçadas da fauna e flora amazônica.",
                 "icon": "biodiversidade"
             },
             "body": [
@@ -100,7 +100,7 @@
         {
             "header": {
                 "title": "CAR (Cadastro Ambiental Rural)",
-                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares  de Cadastro Ambiental Rural (CAR), **irregulares**, sobrepostos em Florestas Públicas Não Destinadas.",
+                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares de Cadastro Ambiental Rural (CAR), **irregulares**, sobrepostos em FPND {{esfera}} no estado.",
                 "icon": "car"
             },
             "body": [
