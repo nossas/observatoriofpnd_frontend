@@ -48,11 +48,13 @@ export const Mapa = () => {
         setMapCenter,
         setMapZoom,
     } = useBusiness()
+    
+    // esfera - define se o contexto do mapa e dos dados (0 - Estadual ou 1 - Federal)
     const { camada, esfera, estados } = useSearch({ from: '/' })
     const mapRef = useRef<any>(null)
     const legendData = camada!==undefined && mapData?.layersLegends ? mapData?.layersLegends[Camadas[camada]] : defaultLegend
     const [ pixelClicked, setPixelClicked ] = useState<Pixel | null> (null)
-    
+
     useEffect(() => {
         if (mapRef.current ) {
             let extent;

@@ -14,7 +14,9 @@ export const getInfoData = async (camada: number | undefined, esfera: number | u
         console.log(_url)
         const res = await axios.get(_url)
         if (!res?.data) throw ('No data')
-        return _formatData(res.data)
+        
+        // Adiciona o contexto de esfera (0 - Estaduais, 1 - Federais) aos dados para serem apresentados junto aos textos informativos
+        return _formatData({ ...res.data, esfera: esfera === 0 ? "estaduais" : esfera === 1 ? "federais" : "" })
     } catch (error) {
         return undefined
     }
