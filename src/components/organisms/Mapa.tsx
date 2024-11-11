@@ -95,7 +95,7 @@ export const Mapa = () => {
             Math.max(acc[2], ufExtent[2]), // xmax
             Math.max(acc[3], ufExtent[3]), // ymax
           ];
-        }, null);
+        }, []);
       } else {
         // Usa o extent default
         extent = extents["default"];

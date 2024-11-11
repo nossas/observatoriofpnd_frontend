@@ -113,8 +113,8 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
 
   useEffect(() => {
     navigate({
-      search: (prev) => ({ ...prev, fpnd: selectedFeatureCode || undefined }),
-    });
+      search: (prev: any) => ({ ...prev, fpnd: selectedFeatureCode || undefined }),
+    } as any);
   }, [selectedFeatureCode]);
 
   useEffect(() => {

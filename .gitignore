@@ -1,3 +1,4 @@
+.env
 
 # AWS sam build
 .aws-sam
