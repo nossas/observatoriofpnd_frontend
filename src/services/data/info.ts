@@ -14,7 +14,7 @@ export const getInfoData = async (camada: number | undefined, esfera: number | u
         console.log(_url)
         const res = await axios.get(_url)
         if (!res?.data) throw ('No data')
-        return _formatData(res.data)
+        return {..._formatData(res.data), esfera: Esferas[esfera || 0]}
     } catch (error) {
         return undefined
     }
