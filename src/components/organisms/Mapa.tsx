@@ -88,6 +88,7 @@ export const Mapa = () => {
         extent = estados.reduce((acc, uf) => {
           //@ts-ignore
           const ufExtent = extents[uf] || extents["default"];
+
           if (!acc) return ufExtent;
           return [
             Math.min(acc[0], ufExtent[0]), // xmin
@@ -97,15 +98,24 @@ export const Mapa = () => {
           ];
         }, []);
       } else {
-        // Usa o extent default
         extent = extents["default"];
       }
-      //@ts-ignore
-      extent = [
-        ...fromLonLat([extent[0], extent[1]]),
-        ...fromLonLat([extent[2], extent[3]]),
+
+      if (
+        !extent ||
+        extent.length !== 4 ||
+        extent.some((value) => isNaN(value) || value === undefined)
+      ) {
+        return;  // Evita tentar transformar um extent inválido
+      }
+  
+      // Garantir que a ordem das coordenadas está correta: [longitude, latitude]
+      const transformedExtent = [
+        ...fromLonLat([extent[0], extent[1]]), // [longitude, latitude]
+        ...fromLonLat([extent[2], extent[3]]), // [longitude, latitude]
       ];
-      mapRef.current.ol.getView().fit(extent, mapRef.current.ol.getSize());
+
+      mapRef.current.ol.getView().fit(transformedExtent, mapRef.current.ol.getSize());
     }
   }, [mapRef, estados]);
 
