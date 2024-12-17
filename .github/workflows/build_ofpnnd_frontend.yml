@@ -36,12 +36,12 @@ jobs:
             with:
               context: ./
               build-args: |
-                MY_APP_VITE_URL_INFO_DATA=https://api.deolhonasflorestaspublicas.org.br/info-data
-                MY_APP_VITE_URL_MAP_DATA=https://api.deolhonasflorestaspublicas.org.br/map-data
-                MY_APP_VITE_URL_MVT=https://api.deolhonasflorestaspublicas.org.br/mvt/fpnd/{z}/{x}/{y}.pbf
-                MY_APP_VITE_URL_GOOGLE_MAP_API_TERRAIN=https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}
-                MY_APP_VITE_MAP_DEFAULT_CENTER=-54,-3
-                MY_APP_VITE_MAP_DEFAULT_ZOOM=6
+                VITE_URL_INFO_DATA=https://api.deolhonasflorestaspublicas.org.br/info-data
+                VITE_URL_MAP_DATA=https://api.deolhonasflorestaspublicas.org.br/map-data
+                VITE_URL_MVT=https://api.deolhonasflorestaspublicas.org.br/mvt/fpnd/{z}/{x}/{y}.pbf
+                VITE_URL_GOOGLE_MAP_API_TERRAIN=https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}
+                VITE_MAP_DEFAULT_CENTER=-54,-3
+                VITE_MAP_DEFAULT_ZOOM=6
               file: Dockerfile
               push: true
               tags: ${{ steps.meta.outputs.tags }}
