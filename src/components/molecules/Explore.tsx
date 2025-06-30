@@ -1,243 +1,305 @@
 import {
-    Bug,
-    BugFill,
-    Button,
-    Diamond,
-    DiamondFill,
-    ExclamationTriangle,
-    ExclamationTriangleFill,
-    SignPost,
-    SignPostFill,
-    TreeFill,
-    VectorDeforestationTree,
-    VectorDesmatamentoFill,
-    VectorMineracao,
-    VectorMineracaoFill,
-    Wind,
-    XDiamond,
-    XDiamondFill,
-} from 'components/atoms'
+  Bug,
+  BugFill,
+  Button,
+  Diamond,
+  DiamondFill,
+  ExclamationTriangle,
+  ExclamationTriangleFill,
+  SignPost,
+  SignPostFill,
+  TreeFill,
+  VectorDeforestationTree,
+  VectorDesmatamentoFill,
+  VectorMineracao,
+  VectorMineracaoFill,
+  Wind,
+  XDiamond,
+  XDiamondFill,
+} from "components/atoms";
 import { Camadas, Esferas } from "services/data";
-import { Divider, Flex, Select, Grid, Typography } from "antd"
-import { FC, useEffect, useState } from 'react'
+import { Divider, Flex, Select, Grid, Typography } from "antd";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import estados from "assets/data/estados.json";
+import { Actions } from "services/data/types";
 
-const { Text } = Typography
-const { useBreakpoint } = Grid
+const { Text } = Typography;
+const { useBreakpoint } = Grid;
 
 type ExploreProps = {
-    collapsed?: boolean
-    vertical?: boolean
-}
+  collapsed?: boolean;
+  vertical?: boolean;
+};
 
-export const Explore: FC<ExploreProps> = ({ collapsed=false, vertical = true }) => {
-    const [ florestaEstadual, setFlorestaEstadual] = useState<boolean>(false)
-    const [ florestaFederal, setFlorestaFederal] = useState<boolean>(false)
-    const [ maisDesmatadasSelected, setMaisDesmatadasSelected ] = useState<boolean>(false)
-    const [ selectedAction, setSelectedAction ] = useState<number>(-1)
-    const breakpoints = useBreakpoint()
-    const [gapXs, setGapXs] = useState<number>(8)
-    const navigate = useNavigate({ from: '/' })
+export const Explore: FC<ExploreProps> = ({
+  collapsed = false,
+  vertical = true,
+}) => {
+  const [florestaEstadual, setFlorestaEstadual] = useState<boolean>(false);
+  const [florestaFederal, setFlorestaFederal] = useState<boolean>(false);
+  const [maisDesmatadasSelected, setMaisDesmatadasSelected] =
+    useState<boolean>(false);
+  const [selectedAction, setSelectedAction] = useState<number>(-1);
+  const breakpoints = useBreakpoint();
+  const [gapXs, setGapXs] = useState<number>(8);
+  const navigate = useNavigate({ from: "/" });
 
-    useEffect(()=>{
-        if(breakpoints.xs){
-           setGapXs(6) 
-        }
-    },[breakpoints])
-
-    const actions = [
-        {
-            icon: selectedAction === 0 ? <VectorDesmatamentoFill/> : <VectorDeforestationTree/>,
-            label: "Desmatamento", 
-            layer: Camadas.deforastationLast10Years,
-        },
-        {
-            icon: <Wind/>,
-            label: "Estoque de Carbono", 
-            layer: Camadas.undergroundCarbonStorage,
-        },
-        {
-            icon: selectedAction === 2 ? <BugFill/> : <Bug/>,
-            label: "Biodiversidade",
-            layer: Camadas.speciesDiversity,
-        },
-        {
-            icon: selectedAction === 3 ? <SignPostFill/> : <SignPost/>,
-            label: "CAR (Cadastro Ambiental Rural)",
-            layer: Camadas.carOverlap,
-        },
-        {
-            icon: selectedAction === 4 ? <VectorMineracaoFill/> : <VectorMineracao/>,
-            label: "Mineração",
-            layer: Camadas.mining,
-        },            
-    ]
-
-    useEffect(() => {
-        // setTimeout(() => setSelectedAction(0), 500);
-        setSelectedAction(0)
-    }, [])
-
-    useEffect(() => {
-        if (maisDesmatadasSelected) {
-            setSelectedAction(-1)
-
-            navigate({
-                search: (prev) => ({ ...prev, camada: Camadas.deforastationLastMonth }),
-            })
-        }
-    }, [maisDesmatadasSelected])
-
-    useEffect(() => {
-        if (selectedAction !== -1) {
-            setMaisDesmatadasSelected(false)
-            navigate({
-                search: (prev) => ({ ...prev, camada: actions[selectedAction].layer }),
-            })
-        }
-    }, [selectedAction])
-
-    useEffect(() => {
-        if (!maisDesmatadasSelected && selectedAction===-1) {
-            navigate({
-                search: (prev) => ({ ...prev, camada: undefined }),
-            })
-        }
-    }, [maisDesmatadasSelected, selectedAction])
-
-    useEffect(() => {
-        if (florestaFederal){
-            navigate({
-                search: (prev) => ({ ...prev, esfera: Esferas.Federal }),
-            });
-        }
-        else if (florestaEstadual){
-            navigate({
-                search: (prev) => ({ ...prev, esfera: Esferas.Estadual }),
-            });
-        }  
-        else {
-            navigate({
-                search: (prev) => ({ ...prev, esfera: undefined }),
-            });
-        }
-    }, [florestaEstadual, florestaFederal])
-
-    const categoriaEstaduais = () => {
-        if(!florestaEstadual){
-            setFlorestaFederal(false)
-        }
-        setFlorestaEstadual(!florestaEstadual)
+  useEffect(() => {
+    if (breakpoints.xs) {
+      setGapXs(6);
     }
-    const categoriaFederais = () => {
-        if(!florestaFederal){
-            setFlorestaEstadual(false)
-        }
-        setFlorestaFederal(!florestaFederal)
-    }
+  }, [breakpoints]);
 
-    const maisDesmatadas = () => {
-        setMaisDesmatadasSelected(!maisDesmatadasSelected)
-    }
+  const actions = [
+    {
+      icon:
+        selectedAction === 0 ? (
+          <VectorDesmatamentoFill />
+        ) : (
+          <VectorDeforestationTree />
+        ),
+      label: "Desmatamento",
+      layer: Camadas.deforastationLast10Years,
+      type: "ameacas",
+      action: Actions.Desmatamento,
+    },
+    {
+      icon: <Wind />,
+      label: "Estoque de Carbono",
+      layer: Camadas.undergroundCarbonStorage,
+      type: "indicadores",
+      action: Actions.EstoqueDeCarbono,
+    },
+    {
+      icon: selectedAction === 2 ? <BugFill /> : <Bug />,
+      label: "Riqueza de espécies ameaçadas",
+      layer: Camadas.speciesDiversity,
+      type: "indicadores",
+      action: Actions.Biodiversidade,
+    },
+    {
+      icon: selectedAction === 3 ? <SignPostFill /> : <SignPost />,
+      label: "CAR (Cadastro Ambiental Rural)",
+      layer: Camadas.carOverlap,
+      type: "ameacas",
+      action: Actions.Car,
+    },
+    {
+      icon:
+        selectedAction === 4 ? <VectorMineracaoFill /> : <VectorMineracao />,
+      label: "Mineração",
+      layer: Camadas.mining,
+      type: "ameacas",
+      action: Actions.Mineracao,
+    },
+  ];
 
-    const onSelectAction = (index: number) => {
-        if (selectedAction === index){
-            setSelectedAction(-1)
-        } else {
-            setSelectedAction(index)
-        }
-    }
+  useEffect(() => {
+    if (maisDesmatadasSelected) {
+      setSelectedAction(-1);
 
-    const onSelectStates = (event: Array<string>) => {
-        if (event.length) {
-            navigate({
-                search: (prev) => ({ ...prev, estados: event }),
-            })
-        } else {
-            navigate({
-                search: (prev) => ({ ...prev, estados: undefined }),
-            })
-        }
+      navigate({
+        search: (prev) => ({ ...prev, camada: Camadas.deforastationLastMonth }),
+      });
     }
+  }, [maisDesmatadasSelected]);
 
-    return (
+  useEffect(() => {
+    if (selectedAction !== -1) {
+      setMaisDesmatadasSelected(false);
+      navigate({
+        search: (prev) => ({ ...prev, camada: actions[selectedAction].layer }),
+      });
+    }
+  }, [selectedAction]);
+
+  useEffect(() => {
+    if (!maisDesmatadasSelected && selectedAction === -1) {
+      navigate({
+        search: (prev) => ({ ...prev, camada: undefined }),
+      });
+    }
+  }, [maisDesmatadasSelected, selectedAction]);
+
+  useEffect(() => {
+    if (florestaFederal) {
+      navigate({
+        search: (prev) => ({ ...prev, esfera: Esferas.Federal }),
+      });
+    } else if (florestaEstadual) {
+      navigate({
+        search: (prev) => ({ ...prev, esfera: Esferas.Estadual }),
+      });
+    } else {
+      navigate({
+        search: (prev) => ({ ...prev, esfera: undefined }),
+      });
+    }
+  }, [florestaEstadual, florestaFederal]);
+
+  const categoriaEstaduais = () => {
+    if (!florestaEstadual) {
+      setFlorestaFederal(false);
+    }
+    setFlorestaEstadual(!florestaEstadual);
+  };
+  const categoriaFederais = () => {
+    if (!florestaFederal) {
+      setFlorestaEstadual(false);
+    }
+    setFlorestaFederal(!florestaFederal);
+  };
+
+  const maisDesmatadas = () => {
+    setMaisDesmatadasSelected(!maisDesmatadasSelected);
+  };
+
+  const onSelectAction = (index: number) => {
+    if (selectedAction === index) {
+      setSelectedAction(-1);
+    } else {
+      setSelectedAction(index);
+    }
+  };
+
+  const onSelectStates = (event: Array<string>) => {
+    if (event.length) {
+      navigate({
+        search: (prev) => ({ ...prev, estados: event }),
+      });
+    } else {
+      navigate({
+        search: (prev) => ({ ...prev, estados: undefined }),
+      });
+    }
+  };
+
+  return (
+    <>
+      <Flex
+        gap={gapXs}
+        vertical={vertical}
+        style={{ padding: "8px 8px 8px 16px" }}
+      >
+        <Text>
+          {collapsed
+            ? ""
+            : "Conheça as Florestas Públicas Não Destinadas da Amazônia"}
+        </Text>
+
+        <Button
+          collapsed={collapsed}
+          icon={<TreeFill />}
+          label="Florestas Públicas Não Destinadas"
+          type="primary"
+          className="botaoExploreSelected"
+        />
+
+        <Button
+          collapsed={collapsed}
+          icon={
+            maisDesmatadasSelected ? (
+              <ExclamationTriangleFill />
+            ) : (
+              <ExclamationTriangle />
+            )
+          }
+          label="FPND mais desmatadas no último mês"
+          type={maisDesmatadasSelected ? "primary" : "default"}
+          onClick={maisDesmatadas}
+        />
+      </Flex>
+
+      <Flex
+        gap={gapXs}
+        vertical={vertical}
+        style={{ padding: "8px 8px 8px 16px" }}
+      >
+        <Text>{collapsed ? "" : "Filtre por categoria"}</Text>
+
+        <Flex gap={gapXs} vertical={vertical ? !!collapsed : vertical}>
+          <Button
+            collapsed={collapsed}
+            icon={florestaFederal ? <XDiamondFill /> : <XDiamond />}
+            label="Florestas Federais"
+            type={florestaFederal ? "primary" : "default"}
+            onClick={categoriaFederais}
+          />
+
+          <Button
+            collapsed={collapsed}
+            icon={florestaEstadual ? <DiamondFill /> : <Diamond />}
+            label="Florestas Estaduais"
+            type={florestaEstadual ? "primary" : "default"}
+            onClick={categoriaEstaduais}
+          />
+        </Flex>
+      </Flex>
+
+      {!collapsed && ( // desativa Select quando menu esta collapsado
         <>
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px' }}>
-                <Text>{collapsed ? '' : 'Conheça as florestas públicas da Amazônia'}</Text>
-                
-                <Button
-                    collapsed={collapsed}
-                    icon={<TreeFill/>}
-                    label="Florestas Públicas Não Destinadas"
-                    type="primary"
-                    className="botaoExploreSelected"
-                />
-                
-                <Button 
-                    collapsed={collapsed} 
-                    icon={ maisDesmatadasSelected ? <ExclamationTriangleFill/> : <ExclamationTriangle/>} 
-                    label="FPND mais desmatadas no último mês" 
-                    type={maisDesmatadasSelected ? "primary" : "default"}
-                    onClick={maisDesmatadas}
-                 />
-            </Flex>
+          <Flex vertical gap={gapXs} style={{ padding: "8px 8px 8px 16px" }}>
+            <Text>Selecione o recorte territorial</Text>
 
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px' }}>
-                <Text>{collapsed ? '' : 'Filtre por categoria'}</Text>
-
-                <Flex gap={gapXs} vertical={vertical ? !!collapsed : vertical}>
-                    <Button
-                        collapsed={collapsed}
-                        icon={florestaFederal ? <XDiamondFill/> : <XDiamond/>}
-                        label="Florestas Federais"
-                        type={florestaFederal ? "primary" : "default"} 
-                        onClick={categoriaFederais}
-                    />
-                
-                    <Button
-                        collapsed={collapsed}
-                        icon={florestaEstadual ? <DiamondFill/> : <Diamond/>}
-                        label="Florestas Estaduais"
-                        type={florestaEstadual ? "primary" : "default"}
-                        onClick={categoriaEstaduais}
-                    />
-                </Flex> 
-            </Flex>
-
-            { !collapsed && ( // desativa Select quando menu esta collapsado
-                <>
-                    <Flex vertical gap={gapXs} style={{padding: '8px 8px 8px 16px'}}>
-                        <Text>Selecione o recorte territorial</Text>
-                
-                        <Select 
-                            mode="multiple" 
-                            allowClear
-                            placeholder="Selecione"
-                            style={{width: "100%"}}
-                            onChange={onSelectStates}
-                            options={estados.data}
-                        />
-                    </Flex>
-                </>
-            )}
-
-            <Divider type={vertical ? 'horizontal' : 'vertical'} style={{marginTop: '10px', marginBottom: '10px'}}/>
-            
-            <Flex gap={gapXs} vertical={vertical} style={{ padding: '8px 8px 8px 16px'}}>
-                <Text>{collapsed ? "" : "Veja no mapa" }</Text>
-
-                { actions.map((action, index) => (
-                    <Button
-                        key={index}
-                        collapsed={collapsed}
-                        type={index===selectedAction? 'primary' : 'default'}
-                        icon={action.icon}
-                        label={action.label}
-                        onClick={() => onSelectAction(index)}
-                    />
-                ))} 
-            </Flex>
+            <Select
+              mode="multiple"
+              allowClear
+              placeholder="Selecione"
+              style={{ width: "100%" }}
+              onChange={onSelectStates}
+              options={estados.data}
+            />
+          </Flex>
         </>
-    )
-}
+      )}
+
+      <Divider
+        type={vertical ? "horizontal" : "vertical"}
+        style={{ marginTop: "10px", marginBottom: "10px" }}
+      />
+
+      <Flex
+        gap={gapXs}
+        vertical={vertical}
+        style={{ padding: "8px 8px 8px 16px" }}
+      >
+        <Text>{collapsed ? "" : "Ameaças"}</Text>
+
+        {actions
+          .filter((action) => action.type === "ameacas")
+          .map((action, index) => (
+            <Button
+              key={index}
+              collapsed={collapsed}
+              type={action.action === selectedAction ? "primary" : "default"}
+              icon={action.icon}
+              label={action.label}
+              onClick={() => onSelectAction(action.action)}
+            />
+          ))}
+      </Flex>
+
+      <Flex
+        gap={gapXs}
+        vertical={vertical}
+        style={{ padding: "8px 8px 8px 16px" }}
+      >
+        <Text>{collapsed ? "" : "Indicadores Ambientais"}</Text>
+
+        {actions
+          .filter(item => item.type === "indicadores")
+          .map((action, index) => (
+            <Button
+              key={index}
+              collapsed={collapsed}
+              type={action.action === selectedAction ? "primary" : "default"}
+              icon={action.icon}
+              label={action.label}
+              onClick={() => onSelectAction(action.action)}
+            />
+          ))}
+      </Flex>
+    </>
+  );
+};

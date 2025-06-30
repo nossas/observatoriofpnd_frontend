@@ -24,3 +24,11 @@ type JSONValue =
 export type JSONObject = {
     [x: string]: JSONValue
 }
+
+export enum Actions {
+    Desmatamento,
+    EstoqueDeCarbono,
+    Biodiversidade,
+    Car,
+    Mineracao,
+}
