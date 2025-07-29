@@ -28,7 +28,7 @@ import {
   GraficoDesmatamentoAcumulado,
   GraficoDesmatamentoRecorte,
 } from ".";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useLoaderData } from "@tanstack/react-router";
 import { substitute } from "services/utils";
 import entenda from "assets/data/entenda.json";

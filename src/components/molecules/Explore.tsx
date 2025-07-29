@@ -240,7 +240,7 @@ export const Explore: FC<ExploreProps> = ({
       {!collapsed && ( // desativa Select quando menu esta collapsado
         <>
           <Flex vertical gap={gapXs} style={{ padding: "8px 8px 8px 16px" }}>
-            <Text>Selecione o recorte territorial</Text>
+            <Text>Selecione por Estado</Text>
 
             <Select
               mode="multiple"
