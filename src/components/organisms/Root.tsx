@@ -4,7 +4,7 @@ import { Explore, EntendaMobile } from 'components/molecules'
 import { ChevronDoubleDown, ChevronDoubleUp, Filter } from 'components/atoms'
 import { Outlet } from '@tanstack/react-router'
 import { useState } from 'react'
-import { getEntendaData } from 'assets/data/entenda'
+import { entenda } from 'assets/data/entenda';
 
 const { Content, Sider } = Layout
 const { Text } = Typography
@@ -17,8 +17,6 @@ export const Root = () => {
     const {
         token: {colorBgContainer},
     }  = theme.useToken()
-
-    const entenda = getEntendaData(null);
 
     return (
         <Layout style={{minHeight: '100vh', maxHeight: '100%'}}>

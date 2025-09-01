@@ -1,7 +1,7 @@
 import React from "react";
 import { Collapse, Flex } from "antd";
 import { InfoContent, InfoHeader, Markdown } from "components/atoms";
-import { headerIcons, parseToPlural } from "components/molecules/Entenda";
+import { headerIcons } from "components/molecules/Entenda";
 import { Esferas } from "services/data";
 
 interface ForestComparisonProps {

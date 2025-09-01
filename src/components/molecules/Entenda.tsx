@@ -1,6 +1,5 @@
 import { Button, Collapse, Flex } from "antd";
 import {
-  AlertaGrilagem,
   BiodiversidadeIcon,
   BugFill,
   CloudFog,
@@ -14,24 +13,16 @@ import {
   Wind,
   XDiamondFill,
 } from "components/atoms";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
+
 import {
   ChevronDoubleDown,
   ChevronDoubleUp,
-  InfoContent,
   InfoHeader,
-  Markdown,
 } from "components/atoms";
-import {
-  GraficoAlertaDesmatamento,
-  GraficoCARSobreposicao,
-  GraficoDesmatamentoAcumulado,
-  GraficoDesmatamentoRecorte,
-} from ".";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useLoaderData, useSearch } from "@tanstack/react-router";
 import { substitute } from "services/utils";
-import { getEntendaData } from "assets/data/entenda";
+import { entenda } from "assets/data/entenda";
 import { useBusiness } from "services/business";
 import { Esferas } from "services/data";
 import ForestComparison from "./Items/ForestComparison";
@@ -93,18 +84,12 @@ export const Entenda = () => {
   const { entendaIsOpen, setEntendaIsOpen } = useBusiness();
   //console.log('infoData', infoData)
 
-  const entenda = getEntendaData(infoData);
-
   const getDoubleExpandIcon = useCallback((panelProps: any) => {
     return panelProps.isActive ? (
       <ChevronDoubleUp style={{ fontSize: "16px" }} />
     ) : (
       <ChevronDoubleDown style={{ fontSize: "16px" }} />
     );
-  }, []);
-
-  const getExpandIcon = useCallback((panelProps: any) => {
-    return panelProps.isActive ? <UpOutlined /> : <DownOutlined />;
   }, []);
 
   function getVerboDesmatamento(percent: string | number): string {

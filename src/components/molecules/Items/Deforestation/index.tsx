@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Collapse, Flex } from "antd";
 import { InfoContent, InfoHeader, Markdown } from "components/atoms";
 import {

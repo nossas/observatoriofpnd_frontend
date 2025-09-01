@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Collapse } from "antd";
+import React from "react";
 import { InfoHeader } from "components/atoms";
 import { headerIcons, parseToPlural } from "components/molecules/Entenda";
 import { Esferas } from "services/data";

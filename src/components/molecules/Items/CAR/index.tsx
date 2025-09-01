@@ -22,7 +22,6 @@ const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
   const {
     carSobreposicaoFpndAreaHa,
     carSobreposicaoFpndEquivalenciaFutebolQtd,
-    carSobreposicaoFpndAreaPer,
     recortePrefixo,
     recorteNome,
     carComparacaoDesmatamento,
