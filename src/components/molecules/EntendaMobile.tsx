@@ -20,7 +20,7 @@ import { GraficoAlertaDesmatamento, GraficoCARSobreposicao, GraficoDesmatamentoA
 import { useCallback } from 'react'
 import { useLoaderData } from '@tanstack/react-router'
 import { substitute } from 'services/utils'
-import entenda from 'assets/data/entenda.json'
+import { getEntendaData } from 'assets/data/entenda'
 
 const url = import.meta.env.VITE_URL_COMO_AGIR
 const highLitghtIconStyle = {color:"#d8952a", fontSize:"32px"}
@@ -46,6 +46,8 @@ const { Text } = Typography
 
 export const EntendaMobile = () => {
     const infoData = useLoaderData({from: '/'})
+
+    const entenda = getEntendaData(infoData);
 
     //console.log('infoData', infoData)
 

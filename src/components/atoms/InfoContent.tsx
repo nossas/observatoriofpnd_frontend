@@ -23,6 +23,7 @@ export const InfoContent: FC<InfoContentProps> = ({ highlighted=false, icon=unde
                 paddingRight: 10,
                 paddingTop: 5,
                 paddingBottom: 5,
+                alignItems: 'center',
             }}
         >
             { icon }

@@ -28,16 +28,26 @@ import {
   GraficoDesmatamentoAcumulado,
   GraficoDesmatamentoRecorte,
 } from ".";
-import { useCallback } from "react";
-import { useLoaderData } from "@tanstack/react-router";
+import { useCallback, useEffect } from "react";
+import { useLoaderData, useSearch } from "@tanstack/react-router";
 import { substitute } from "services/utils";
-import entenda from "assets/data/entenda.json";
+import { getEntendaData } from "assets/data/entenda";
 import { useBusiness } from "services/business";
 import { Esferas } from "services/data";
+import ForestComparison from "./Items/ForestComparison";
+import MonthlyDeforestationAlert from "./Items/MonthlyDeforestationAlert";
+import Deforestation from "./Items/Deforestation";
+import CarbonStock from "./Items/CarbonStock";
+import SpeciesRichness from "./Items/SpeciesRichness";
+import CAR from "./Items/CAR";
+import MiningExploration from "./Items/MiningExploration";
+import UnderstandContent from "./Items/UnderstandContent";
+import { GraphDownArrow } from "components/atoms/Icons";
 
 const url = import.meta.env.VITE_URL_COMO_AGIR;
 const highLitghtIconStyle = { color: "#d8952a", fontSize: "32px" };
-const headerIcons = {
+
+export const headerIcons = {
   florestasEstaduaisxFederais: <XDiamondFill />,
   alertaMensalDeDesmatamento: <ExclamationTriangleFill />,
   desmatamento: <VectorDesmatamentoFill />,
@@ -47,19 +57,43 @@ const headerIcons = {
   mineracao: <VectorMineracao />,
 };
 
-const highlightedIcons = {
+export const highlightedIcons = {
   arvore: <Tree style={highLitghtIconStyle} />,
   biodiversidade: <BiodiversidadeIcon style={highLitghtIconStyle} />,
   co2: <CloudFog style={highLitghtIconStyle} />,
   campoDeFutebol: <VectorCampo style={highLitghtIconStyle} />,
-  grafico: <GraphUpArrow style={highLitghtIconStyle} />,
+  graficoUp: <GraphUpArrow style={highLitghtIconStyle} />,
+  graficoDown: <GraphDownArrow style={highLitghtIconStyle} />,
+};
+
+export const parseToPlural = (esfera: Esferas | string): string => {
+  if (typeof esfera === "number") {
+    switch (esfera) {
+      case Esferas.Federal:
+        return "Federais";
+      case Esferas.Estadual:
+        return "Estaduais";
+      default:
+        return "";
+    }
+  }
+
+  const map = {
+    Federal: "Federais",
+    Estadual: "Estaduais",
+  };
+  return map[esfera as keyof typeof map] ?? "";
 };
 
 export const Entenda = () => {
   const infoData = useLoaderData({ from: "/" });
+  const searchParams = useSearch({ from: "/" });
+  const { camada } = searchParams;
   // const [isActive, setIsActive] = useState(true)
   const { entendaIsOpen, setEntendaIsOpen } = useBusiness();
   //console.log('infoData', infoData)
+
+  const entenda = getEntendaData(infoData);
 
   const getDoubleExpandIcon = useCallback((panelProps: any) => {
     return panelProps.isActive ? (
@@ -73,40 +107,21 @@ export const Entenda = () => {
     return panelProps.isActive ? <UpOutlined /> : <DownOutlined />;
   }, []);
 
-  const parseToPlural = (esfera: Esferas | string): string => {
-    if (typeof esfera === "number") {
-      switch (esfera) {
-        case Esferas.Federal:
-          return "Federais";
-        case Esferas.Estadual:
-          return "Estaduais";
-        default:
-          return "";
-      }
-    }
-
-    const map = {
-      Federal: "Federais",
-      Estadual: "Estaduais",
-    };
-    return map[esfera as keyof typeof map] ?? "";
-  };
-
   function getVerboDesmatamento(percent: string | number): string {
     const value =
       typeof percent === "string"
         ? parseFloat(percent.replace(",", "."))
         : percent;
-    if (isNaN(value)) return ""; 
+    if (isNaN(value)) return "";
     return value >= 0 ? "aumentou" : "reduziu";
   }
 
   const newInfoData = {
     ...infoData,
-    esfera: parseToPlural(infoData.esfera),
-    verboDesmatamento: getVerboDesmatamento(infoData.desmatamentoComparacaoPrimeiroAnoUltimoAnoPer),
-    biodiversidadeFpndTodasMedia: Math.floor(Number(infoData.biodiversidadeFpndTodasMedia.replace(",", "."))),
-    biodiversidadeFpndFederalMedia: Math.floor(Number(infoData.biodiversidadeFpndFederalMedia.replace(",", "."))),
+    esfera: parseToPlural(infoData?.esfera ?? ""),
+    verboDesmatamento: getVerboDesmatamento(
+      infoData.desmatamentoComparacaoPrimeiroAnoUltimoAnoPer
+    ),
   };
 
   return (
@@ -142,26 +157,54 @@ export const Entenda = () => {
                 ),
                 children: (
                   <Flex gap={24} vertical>
-                    {entenda.main.body.reduce(
-                      (children: any, child: any, key: number) => {
-                        return children.concat(
-                          <InfoContent
-                            key={key}
-                            highlighted={child.highlighted}
-                            //@ts-ignore
-                            icon={highlightedIcons[child.icon]}
-                          >
-                            <Markdown
-                              text={substitute(child.text, newInfoData)}
-                              highlighted={child.highlighted}
-                            />
-                          </InfoContent>
-                        );
-                      },
-                      []
-                    )}
+                    <UnderstandContent
+                      infoData={newInfoData}
+                      searchParams={searchParams}
+                    />
 
-                    <Collapse
+                    <Flex gap={8} vertical>
+                      {!camada && (
+                        <ForestComparison
+                          infoData={newInfoData}
+                          searchParams={searchParams}
+                        />
+                      )}
+
+                      {(typeof camada === "undefined" ||
+                        Number(camada) === 2) && (
+                        <>
+                          <MonthlyDeforestationAlert infoData={newInfoData} searchParams={searchParams} />
+
+                          <Deforestation infoData={newInfoData} searchParams={searchParams} />
+                        </>
+                      )}
+
+                      {(typeof camada === "undefined" ||
+                        Number(camada) === 3) && (
+                        <CarbonStock infoData={newInfoData} searchParams={searchParams} />
+                      )}
+
+                      {(typeof camada === "undefined" ||
+                        Number(camada) === 4) && (
+                        <SpeciesRichness
+                          infoData={newInfoData}
+                          searchParams={searchParams}
+                        />
+                      )}
+
+                      {(typeof camada === "undefined" ||
+                        Number(camada) === 5) && <CAR infoData={newInfoData} searchParams={searchParams} />}
+
+                      {(typeof camada === "undefined" ||
+                        Number(camada) === 6) && (
+                        <MiningExploration
+                          infoData={newInfoData}
+                          searchParams={searchParams}
+                        />
+                      )}
+                    </Flex>
+
+                    {/* <Collapse
                       bordered={false}
                       expandIcon={getExpandIcon}
                       expandIconPosition="end"
@@ -261,7 +304,6 @@ export const Entenda = () => {
                                         }
                                         break;
                                       default:
-                                        //console.log(child)
                                         component = (
                                           <InfoContent
                                             key={key}
@@ -289,7 +331,7 @@ export const Entenda = () => {
                         },
                         []
                       )}
-                    />
+                    /> */}
                   </Flex>
                 ),
               },

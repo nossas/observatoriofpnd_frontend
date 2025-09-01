@@ -5,6 +5,7 @@ import { FC } from "react"
 type graficoDesmatamentoProps = {
     data: Array<object>
     recorteTerritorial: String
+    esfera?: string
 }
 const {Text} = Typography
 
@@ -14,7 +15,7 @@ interface DataItem {
   }
 
   
-export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, recorteTerritorial}) => {
+export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, recorteTerritorial, esfera}) => {
 
 
     const config = {
@@ -51,7 +52,7 @@ export const GraficoDesmatamentoRecorte:FC<graficoDesmatamentoProps> = ({data, r
 
     return (
         <Flex vertical align='center' justify='center'>
-            <Text strong style={{fontSize:'14px'}}> FPND n{recorteTerritorial} </Text>
+            <Text strong style={{fontSize:'14px'}}> FPND{esfera ? ' '.concat(esfera) : ''} n{recorteTerritorial} </Text>
             <Pie {...config}/>
         </Flex>
     )

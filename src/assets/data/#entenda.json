@@ -89,7 +89,7 @@
         {
             "header": {
                 "title": "Riqueza de espécies ameaçadas",
-                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndFederalMedia}}** espécies ameaçadas da fauna e flora amazônica.",
+                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{#if esfera=='Federal'}}federal{{else}}lalala** espécies ameaçadas da fauna e flora amazônica.",
                 "icon": "biodiversidade"
             },
             "body": [

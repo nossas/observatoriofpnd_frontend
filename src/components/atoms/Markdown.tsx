@@ -13,6 +13,7 @@ export const Markdown: FC<MarkdownProps> = ({ text, highlighted=false }) => {
 
     return (
         <ReactMarkdown
+            
             components={{
                 strong(props) {
                     const {node, ...rest} = props

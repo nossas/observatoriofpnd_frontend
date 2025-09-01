@@ -13,6 +13,10 @@
             "value": "AM"
         },
         {
+            "label": "Maranhão",
+            "value": "MA"
+        },
+        {
             "label": "Mato Grosso ",
             "value": "MT"
         },
@@ -27,6 +31,10 @@
         {
             "label": "Roraima",
             "value": "RR"
+        },
+        {
+            "label": "Tocantins",
+            "value": "TO"
         }
     ]
 }

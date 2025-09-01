@@ -19,6 +19,7 @@ import exclamationTriangleSvg from 'assets/svg/exclamation-triangle.svg?react'
 import FilterSvg from 'assets/svg/filter.svg?react'
 import globeAmericasSvg from 'assets/svg/globe-americas.svg?react'
 import graphUpArrowSvg from 'assets/svg/graph-up-arrow.svg?react'
+import graphDownArrowSvg from 'assets/svg/graph-down-arrow.svg?react'
 import infoCircleFillSvg from 'assets/svg/info-circle-fill.svg?react'
 import plusSvg from 'assets/svg/plus.svg?react'
 import questionCrircleFillSvg from 'assets/svg/question-circle-fill.svg?react'
@@ -92,6 +93,9 @@ export const GlobeAmericas = ({style = {}}) => (
 )
 export const GraphUpArrow = ({style = {}}) => (
     <Icon component={graphUpArrowSvg} style={style}/>
+)
+export const GraphDownArrow = ({style = {}}) => (
+    <Icon component={graphDownArrowSvg} style={style}/>
 )
 export const InfoCircleFill = ({style = {}}) => (
     <Icon component={infoCircleFillSvg} style={style}/>

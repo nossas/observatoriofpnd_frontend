@@ -11,7 +11,7 @@ export enum Camadas {
 
 export enum Esferas {
     Estadual,
-    Federal,
+    Federal
 }
 
 type JSONValue =
