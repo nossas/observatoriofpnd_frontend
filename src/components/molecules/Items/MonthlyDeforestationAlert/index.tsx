@@ -8,6 +8,7 @@ import {
 } from "components/molecules/Entenda";
 import { GraficoAlertaDesmatamento } from "components/molecules/GraficoAlertaDesmatamento";
 import { Esferas } from "services/data";
+import { useTranslation } from "react-i18next";
 
 interface MonthlyDeforestationAlertProps {
   infoData: any;
@@ -19,6 +20,7 @@ const MonthlyDeforestationAlert: React.FC<MonthlyDeforestationAlertProps> = ({
   searchParams,
 }) => {
   const { esfera } = searchParams;
+  const { t } = useTranslation();
 
   const {
     ultimoMes,
@@ -34,7 +36,7 @@ const MonthlyDeforestationAlert: React.FC<MonthlyDeforestationAlertProps> = ({
 
   const noHasData =
     Boolean(selectedEsfera) && alertaMensalDesmatamentoUltimoMesHa === "0";
-  
+
   return (
     <Collapse
       bordered={false}
@@ -43,8 +45,12 @@ const MonthlyDeforestationAlert: React.FC<MonthlyDeforestationAlertProps> = ({
         {
           label: (
             <InfoHeader
-              title="Alerta mensal de desmatamento"
-              description={`No mês de ${ultimoMes} foram desmatados **${alertaMensalDesmatamentoUltimoMesHa}** hectares em FPND${selectedEsfera ? ' '.concat(selectedEsfera) : ''}.`}
+              title={t("monthly_deforestation_alert")}
+              description={t("monthly_deforestation_summary", {
+                ultimoMes,
+                alertaMensalDesmatamentoUltimoMesHa,
+                selectedEsfera: selectedEsfera ?? "",
+              })}
               icon={headerIcons["alertaMensalDeDesmatamento"]}
             />
           ),
@@ -52,13 +58,21 @@ const MonthlyDeforestationAlert: React.FC<MonthlyDeforestationAlertProps> = ({
             <Flex gap={24} vertical>
               <InfoContent
                 highlighted={true}
-                icon={alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao === 'maior' ? highlightedIcons["graficoUp"] : highlightedIcons["graficoDown"]}
+                icon={
+                  alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao ===
+                  "maior"
+                    ? highlightedIcons["graficoUp"]
+                    : highlightedIcons["graficoDown"]
+                }
               >
                 <Markdown
                   text={
                     noHasData
-                      ? "Não há dados para exibir."
-                      : `**${alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioPer}%** ${alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao} em relação ao mesmo mês do ano anterior`
+                      ? t("no_data_to_display")
+                      : t("deforestation_monthly_comparison_previous_year", {
+                          alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioPer,
+                          alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao,
+                        })
                   }
                   highlighted={true}
                 />

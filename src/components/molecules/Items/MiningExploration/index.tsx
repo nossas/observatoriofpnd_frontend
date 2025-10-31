@@ -1,8 +1,13 @@
 import React from "react";
 import { Collapse, Flex } from "antd";
 import { InfoContent, InfoHeader, Markdown } from "components/atoms";
-import { headerIcons, highlightedIcons, parseToPlural } from "components/molecules/Entenda";
+import {
+  headerIcons,
+  highlightedIcons,
+  parseToPlural,
+} from "components/molecules/Entenda";
 import { Esferas } from "services/data";
+import { useTranslation } from "react-i18next";
 
 interface MiningExplorationProps {
   infoData: any;
@@ -13,6 +18,7 @@ const MiningExploration: React.FC<MiningExplorationProps> = ({
   infoData,
   searchParams,
 }) => {
+  const { t } = useTranslation();
   const {
     recortePrefixo,
     recorteNome,
@@ -35,8 +41,13 @@ const MiningExploration: React.FC<MiningExplorationProps> = ({
         {
           label: (
             <InfoHeader
-              title="Mineração"
-              description={`A área de mineração total (industrial e garimpo) em 2022 nas FPNDs ${selectedEsfera} n${recortePrefixo} **${recorteNome}** corresponde a **${mineracaoSobreposicaoFpndAreaHa}** hectares.`}
+              title={t("mining")}
+              description={t("total_mining_area_fpnd", {
+                selectedEsfera,
+                recortePrefixo,
+                recorteNome,
+                mineracaoSobreposicaoFpndAreaHa,
+              })}
               icon={headerIcons["mineracao"]}
             />
           ),
@@ -47,7 +58,9 @@ const MiningExploration: React.FC<MiningExplorationProps> = ({
                 icon={highlightedIcons["campoDeFutebol"]}
               >
                 <Markdown
-                  text={`Isso equivale a **${mineracaoSobreposicaoFpndEquivalenciaFutebolQtd}** campos de futebol.`}
+                  text={t("mining_equivalent_football_fields", {
+                    mineracaoSobreposicaoFpndEquivalenciaFutebolQtd,
+                  })}
                   highlighted={true}
                 />
               </InfoContent>

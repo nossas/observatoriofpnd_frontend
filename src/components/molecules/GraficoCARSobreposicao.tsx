@@ -2,6 +2,7 @@ import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
 import { formatNumber } from "services/utils"
+import { useTranslation } from "react-i18next";
 
 const {Text} = Typography
 
@@ -16,7 +17,7 @@ type graficoCARprops = {
 }
 
 export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
-
+    const { t } = useTranslation();
     const config = {
         data: data,
         xField: 'xField',
@@ -58,7 +59,7 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
 
     return (
         <Flex vertical align='center' justify='center'>
-            <Text strong style={{fontSize:'14px'}}>Área de CAR sobrepostos às FPND</Text>
+            <Text strong style={{fontSize:'14px'}}>{t('car_area_overlapping_fpnd')}</Text>
             <Column {...config}/>
         </Flex>
     )

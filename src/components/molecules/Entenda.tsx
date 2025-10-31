@@ -34,6 +34,7 @@ import CAR from "./Items/CAR";
 import MiningExploration from "./Items/MiningExploration";
 import UnderstandContent from "./Items/UnderstandContent";
 import { GraphDownArrow } from "components/atoms/Icons";
+import { useTranslation } from "react-i18next";
 
 const url = import.meta.env.VITE_URL_COMO_AGIR;
 const highLitghtIconStyle = { color: "#d8952a", fontSize: "32px" };
@@ -61,9 +62,9 @@ export const parseToPlural = (esfera: Esferas | string): string => {
   if (typeof esfera === "number") {
     switch (esfera) {
       case Esferas.Federal:
-        return "Federais";
+        return "federal";
       case Esferas.Estadual:
-        return "Estaduais";
+        return "state";
       default:
         return "";
     }
@@ -83,6 +84,7 @@ export const Entenda = () => {
   // const [isActive, setIsActive] = useState(true)
   const { entendaIsOpen, setEntendaIsOpen } = useBusiness();
   //console.log('infoData', infoData)
+  const { t } = useTranslation();
 
   const getDoubleExpandIcon = useCallback((panelProps: any) => {
     return panelProps.isActive ? (
@@ -98,12 +100,12 @@ export const Entenda = () => {
         ? parseFloat(percent.replace(",", "."))
         : percent;
     if (isNaN(value)) return "";
-    return value >= 0 ? "aumentou" : "reduziu";
+    return value >= 0 ? t('increased') : t('reduced');
   }
 
   const newInfoData = {
     ...infoData,
-    esfera: parseToPlural(infoData?.esfera ?? ""),
+    esfera: t(parseToPlural(infoData?.esfera ?? "")),
     verboDesmatamento: getVerboDesmatamento(
       infoData.desmatamentoComparacaoPrimeiroAnoUltimoAnoPer
     ),
@@ -337,7 +339,7 @@ export const Entenda = () => {
                 target="_blank"
                 type="primary"
               >
-                Como agir
+                {t('how_to_act')}
               </Button>
             )}
           </Flex>

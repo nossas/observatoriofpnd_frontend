@@ -9,6 +9,7 @@ import { Pixel } from "ol/pixel";
 import { Modal, Button } from "antd";
 
 import { RStyleArray, RStyle, RStroke, RFill, useRStyle } from "rlayers/style";
+import { useTranslation } from "react-i18next";
 
 const projection = import.meta.env.VITE_DEFAULT_PROJECTION;
 const urlMVT = import.meta.env.VITE_URL_MVT;
@@ -33,6 +34,7 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
   pixelClicked,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const fpndStyle = useRStyle();
   const layerRef = useRef<any>(null);
   const [selectedFeatureCode, setSelectedFeatureCode] = useState<string | null>(
@@ -155,11 +157,11 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
         onCancel={handleCancel}
         footer={[
           <Button key="ok" type="primary" onClick={handleConfirm}>
-            Analisar
+            {t('analyze')}
           </Button>,
         ]}
       >
-        <p>Deseja analisar a FPND selecionada?</p>
+        <p>{t('confirm_analyze_selected_fpnd')}</p>
       </Modal>
 
       <RStyleArray ref={fpndStyle} render={getStyle} />

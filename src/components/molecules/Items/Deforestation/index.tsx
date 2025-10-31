@@ -9,6 +9,7 @@ import {
 import { GraficoDesmatamentoRecorte } from "components/molecules/GraficoDesmatamentoRecorte";
 import { GraficoDesmatamentoAcumulado } from "components/molecules/GraficoDesmatamentoAcumulado";
 import { Esferas } from "services/data";
+import { useTranslation } from "react-i18next";
 
 interface DeforestationProps {
   infoData: any;
@@ -20,6 +21,7 @@ const Deforestation: React.FC<DeforestationProps> = ({
   searchParams,
 }) => {
   const { esfera } = searchParams;
+  const { t } = useTranslation();
 
   const {
     recortePrefixo,
@@ -51,8 +53,13 @@ const Deforestation: React.FC<DeforestationProps> = ({
         {
           label: (
             <InfoHeader
-              title="Desmatamento"
-              description={`A área desmatada total nas FPND ${selectedEsfera} n${recortePrefixo} ${recorteNome} é de **${desmatamentoAreaHa}** de hectares.`}
+              title={t("deforestation")}
+              description={t("total_deforested_area_fpnd", {
+                selectedEsfera,
+                recortePrefixo,
+                recorteNome,
+                desmatamentoAreaHa,
+              })}
               icon={headerIcons["desmatamento"]}
             />
           ),
@@ -60,7 +67,9 @@ const Deforestation: React.FC<DeforestationProps> = ({
             <Flex gap={24} vertical>
               <InfoContent highlighted={true} icon={highlightedIcons["arvore"]}>
                 <Markdown
-                  text={`Possui **${desmatamentoFlorestaNativaHa}** de hectares de floresta nativa.`}
+                  text={t('native_forest_area', {
+                    desmatamentoFlorestaNativaHa,
+                  })}
                   highlighted={true}
                 />
               </InfoContent>
@@ -76,7 +85,14 @@ const Deforestation: React.FC<DeforestationProps> = ({
               {formattedComparacao !== 0 && (
                 <InfoContent>
                   <Markdown
-                    text={`A área desmatada n${recortePrefixo} ${recorteNome} ${verboDesmatamento} **${formattedComparacao}%** de ${primeiroAno} a ${ultimoAno}.`}
+                    text={t('deforestation_change_over_time', {
+                      recortePrefixo,
+                      recorteNome,
+                      verboDesmatamento,
+                      formattedComparacao,
+                      primeiroAno,
+                      ultimoAno,
+                    })}
                   />
                 </InfoContent>
               )}

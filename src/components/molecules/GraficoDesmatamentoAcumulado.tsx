@@ -2,6 +2,7 @@ import { Column } from "@ant-design/plots";
 import { formatNumber } from "services/utils";
 import { FC } from "react";
 import { Flex, Typography } from "antd";
+import { useTranslation } from "react-i18next";
 
 const { Text } = Typography;
 
@@ -14,9 +15,16 @@ interface DataItem {
   yField: number;
 }
 
+const years_interval = {
+  initial: 2007,
+  final: 2024,
+};
+
 export const GraficoDesmatamentoAcumulado: FC<
   graficoDesmatamentoAcumuladoProps
 > = ({ data }) => {
+  const { t } = useTranslation();
+
   const config = {
     data: data,
     xField: "xField",
@@ -33,7 +41,7 @@ export const GraficoDesmatamentoAcumulado: FC<
         title: "Hectare",
         titleSpacing: -5,
         labelFormatter: "~s",
-      }
+      },
     },
     style: {
       radiusTopLeft: 2,
@@ -50,7 +58,10 @@ export const GraficoDesmatamentoAcumulado: FC<
   return (
     <Flex vertical align="center" justify="center">
       <Text strong style={{ fontSize: "14px" }}>
-        Desmatamento Acumulado de 2007 a 2024
+        {t("cumulative_deforestation", {
+          initial_year: years_interval.initial,
+          final_year: years_interval.final,
+        })}
       </Text>
       <Column {...config} />
     </Flex>

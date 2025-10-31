@@ -7,9 +7,14 @@ import {
   InfoHeader,
   Markdown,
 } from "components/atoms";
-import { headerIcons, highlightedIcons, parseToPlural } from "components/molecules/Entenda";
+import {
+  headerIcons,
+  highlightedIcons,
+  parseToPlural,
+} from "components/molecules/Entenda";
 import { GraficoCARSobreposicao } from "components/molecules/GraficoCARSobreposicao";
 import { Esferas } from "services/data";
+import { useTranslation } from "react-i18next";
 
 interface CARProps {
   infoData: any;
@@ -18,6 +23,7 @@ interface CARProps {
 
 const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
   const { esfera } = searchParams;
+  const { t } = useTranslation();
 
   const {
     carSobreposicaoFpndAreaHa,
@@ -29,9 +35,9 @@ const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
   } = infoData;
 
   const selectedEsfera =
-      typeof esfera === "number"
-        ? parseToPlural(Esferas[esfera as unknown as Esferas]).toLowerCase()
-        : "";
+    typeof esfera === "number"
+      ? parseToPlural(Esferas[esfera as unknown as Esferas]).toLowerCase()
+      : "";
 
   return (
     <Collapse
@@ -41,8 +47,13 @@ const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
         {
           label: (
             <InfoHeader
-              title="CAR (Cadastro Ambiental Rural)"
-              description={`Há **${carSobreposicaoFpndAreaHa}** de hectares de Cadastro Ambiental Rural (CAR) **irregulares** n${recortePrefixo} ${recorteNome}, sobrepostos em FPND ${selectedEsfera}.`}
+              title={t("rural_environmental_registry")}
+              description={t("irregular_car_overlap_fpnd", {
+                carSobreposicaoFpndAreaHa,
+                recortePrefixo,
+                recorteNome,
+                selectedEsfera,
+              })}
               icon={headerIcons["car"]}
             />
           ),
@@ -53,7 +64,9 @@ const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
                 icon={highlightedIcons["campoDeFutebol"]}
               >
                 <Markdown
-                  text={`Isso equivale a **${carSobreposicaoFpndEquivalenciaFutebolQtd}** de campos de futebol.`}
+                  text={t("equivalent_football_fields", {
+                    carSobreposicaoFpndEquivalenciaFutebolQtd,
+                  })}
                   highlighted={true}
                 />
               </InfoContent>
@@ -70,10 +83,15 @@ const CAR: React.FC<CARProps> = ({ infoData, searchParams }) => {
                       />
                     }
                   />
-                  <Markdown text="A presença de CAR em áreas florestais podem indicar grilagem, ameaçando a conservação desses ecossistemas vitais." />
-                  <Markdown text="Com base em estudo do IPAM e ABRAMPA, 44% dos casos de sobreposição de CAR em terras públicas referem-se a áreas com mais de 1.500 hectares, não se tratando de pequenas ocupações para a agricultura familiar ou de subsistência, mas possivelmente  grupos que possuem financiamento e organização." />
+                  <Markdown text={t("car_presence_warning")} />
+                  <Markdown text={t("ipam_abrampla_study_summary")} />
                   <Markdown
-                    text={`Nas FPND ${selectedEsfera} d${recortePrefixo} ${recorteNome}, para cada **${carComparacaoDesmatamento}** hectares de CAR, temos 1 hectare de desmatamento.`}
+                    text={t("car_to_deforestation_ratio", {
+                      selectedEsfera,
+                      recortePrefixo,
+                      recorteNome,
+                      carComparacaoDesmatamento,
+                    })}
                   />
                 </Flex>
               </InfoContent>

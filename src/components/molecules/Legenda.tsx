@@ -1,6 +1,7 @@
 import { Card, Tag, Flex, Typography, Button, Grid } from "antd";
 import { ChevronDoubleUp, ChevronDoubleDown} from '../atoms/index'
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const { Text } = Typography
 const { useBreakpoint } = Grid
@@ -11,6 +12,7 @@ type LegendaProps = {
 
 export const Legenda: FC<LegendaProps> = ({bins}) => {
     const breakpoints = useBreakpoint()
+    const { t } = useTranslation();
     const [ legendaOpen, setLegendaOpen ] = useState(!breakpoints.xs)
 
     return(
@@ -74,7 +76,7 @@ export const Legenda: FC<LegendaProps> = ({bins}) => {
                         </Text>
                     ))}
 
-                    <Text style={{fontSize: 12}}>*São considerados os registros de FPND maiores que 10 mil hectares.</Text>
+                    <Text style={{fontSize: 12}}>{t('note_fpnd_over_10k_hectares')}</Text>
                 </Flex>
             )}
         </Card>

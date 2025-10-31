@@ -5,6 +5,7 @@ import { ChevronDoubleDown, ChevronDoubleUp, Filter } from 'components/atoms'
 import { Outlet } from '@tanstack/react-router'
 import { useState } from 'react'
 import { entenda } from 'assets/data/entenda';
+import { useTranslation } from 'react-i18next';
 
 const { Content, Sider } = Layout
 const { Text } = Typography
@@ -14,6 +15,7 @@ export const Root = () => {
     const [ collapsed, setCollapsed ]  = useState(false)
     const [ entendaMobileOpen, setEntendaMobileOpen ] = useState(false)
     const breakpoints = useBreakpoint()
+    const { t } = useTranslation()
     const {
         token: {colorBgContainer},
     }  = theme.useToken()
@@ -28,7 +30,7 @@ export const Root = () => {
                                 <>
                                     <Filter/>
                                                                         
-                                    <Text strong>Explore</Text>
+                                    <Text strong>{t('explore')}</Text>
                                 </>
                             )}
                         </Flex>
@@ -73,7 +75,7 @@ export const Root = () => {
                         <Flex gap={10} style={{padding:'10px'}}>
                             <Filter/>
 
-                            <Text strong > Explore </Text>
+                            <Text strong > {t("explore")} </Text>
                         </Flex>
 
                         <Explore collapsed={!collapsed}/>

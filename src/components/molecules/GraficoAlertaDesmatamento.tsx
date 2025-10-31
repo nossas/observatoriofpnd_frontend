@@ -2,6 +2,7 @@ import { Column } from '@ant-design/plots';
 import { FC } from "react"
 import { formatNumber } from "services/utils"
 import { Flex, Typography } from "antd"
+import { useTranslation } from 'react-i18next';
 
 const {Text} = Typography
 
@@ -16,6 +17,7 @@ type graficoAlertaProps = {
 }
 //https://ant--design--charts-antgroup-com.translate.goog/en/options/plots/component/axis?_x_tr_sl=pt&_x_tr_tl=en&_x_tr_hl=pt-BR&_x_tr_pto=wapp&_x_tr_hist=true
 export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
+    const { t } = useTranslation();
 
     const config = {
         data: data,
@@ -59,7 +61,7 @@ export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
     };
     return (
         <Flex vertical align='center' justify='center'>
-            <Text strong style={{fontSize:'14px'}}> Área desmatada </Text>
+            <Text strong style={{fontSize:'14px'}}> {t('deforested_area')} </Text>
             <Column {...config}/>
         </Flex>
     )

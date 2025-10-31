@@ -23,6 +23,7 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import estados from "assets/data/estados.json";
 import { Actions } from "services/data/types";
+import { useTranslation } from "react-i18next";
 
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
@@ -44,6 +45,7 @@ export const Explore: FC<ExploreProps> = ({
   const breakpoints = useBreakpoint();
   const [gapXs, setGapXs] = useState<number>(8);
   const navigate = useNavigate({ from: "/" });
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (breakpoints.xs) {
@@ -59,28 +61,28 @@ export const Explore: FC<ExploreProps> = ({
         ) : (
           <VectorDeforestationTree />
         ),
-      label: "Desmatamento",
+      label: t('deforestation'),
       layer: Camadas.deforastationLast10Years,
       type: "ameacas",
       action: Actions.Desmatamento,
     },
     {
       icon: <Wind />,
-      label: "Estoque de Carbono",
+      label: t('carbon_stock'),
       layer: Camadas.undergroundCarbonStorage,
       type: "indicadores",
       action: Actions.EstoqueDeCarbono,
     },
     {
       icon: selectedAction === 2 ? <BugFill /> : <Bug />,
-      label: "Riqueza de espécies ameaçadas",
+      label: t('threatened_species_richness'),
       layer: Camadas.speciesDiversity,
       type: "indicadores",
       action: Actions.Biodiversidade,
     },
     {
       icon: selectedAction === 3 ? <SignPostFill /> : <SignPost />,
-      label: "CAR (Cadastro Ambiental Rural)",
+      label: t('rural_environmental_registry'),
       layer: Camadas.carOverlap,
       type: "ameacas",
       action: Actions.Car,
@@ -88,7 +90,7 @@ export const Explore: FC<ExploreProps> = ({
     {
       icon:
         selectedAction === 4 ? <VectorMineracaoFill /> : <VectorMineracao />,
-      label: "Mineração",
+      label: t('mining'),
       layer: Camadas.mining,
       type: "ameacas",
       action: Actions.Mineracao,
@@ -185,13 +187,13 @@ export const Explore: FC<ExploreProps> = ({
         <Text>
           {collapsed
             ? ""
-            : "Conheça as Florestas Públicas Não Destinadas da Amazônia"}
+            : t('discover_undesignated_public_forests_amazon')}
         </Text>
 
         <Button
           collapsed={collapsed}
           icon={<TreeFill />}
-          label="Florestas Públicas Não Destinadas"
+          label={t('undesignated_public_forests')}
           type="primary"
           className="botaoExploreSelected"
         />
@@ -205,7 +207,7 @@ export const Explore: FC<ExploreProps> = ({
               <ExclamationTriangle />
             )
           }
-          label="FPND mais desmatadas no último mês"
+          label={t('most_deforested_fpnd_last_month')}
           type={maisDesmatadasSelected ? "primary" : "default"}
           onClick={maisDesmatadas}
         />
@@ -216,13 +218,13 @@ export const Explore: FC<ExploreProps> = ({
         vertical={vertical}
         style={{ padding: "8px 8px 8px 16px" }}
       >
-        <Text>{collapsed ? "" : "Filtre por categoria"}</Text>
+        <Text>{collapsed ? "" : t('filter_by_category')}</Text>
 
         <Flex gap={gapXs} vertical={vertical ? !!collapsed : vertical}>
           <Button
             collapsed={collapsed}
             icon={florestaFederal ? <XDiamondFill /> : <XDiamond />}
-            label="Florestas Federais"
+            label={t('federal_forests')}
             type={florestaFederal ? "primary" : "default"}
             onClick={categoriaFederais}
           />
@@ -230,7 +232,7 @@ export const Explore: FC<ExploreProps> = ({
           <Button
             collapsed={collapsed}
             icon={florestaEstadual ? <DiamondFill /> : <Diamond />}
-            label="Florestas Estaduais"
+            label={t('state_forests')}
             type={florestaEstadual ? "primary" : "default"}
             onClick={categoriaEstaduais}
           />
@@ -240,12 +242,12 @@ export const Explore: FC<ExploreProps> = ({
       {!collapsed && ( // desativa Select quando menu esta collapsado
         <>
           <Flex vertical gap={gapXs} style={{ padding: "8px 8px 8px 16px" }}>
-            <Text>Selecione por Estado</Text>
+            <Text>{t('select_by_state')}</Text>
 
             <Select
               mode="multiple"
               allowClear
-              placeholder="Selecione"
+              placeholder={t('select')}
               style={{ width: "100%" }}
               onChange={onSelectStates}
               options={estados.data}
@@ -264,7 +266,7 @@ export const Explore: FC<ExploreProps> = ({
         vertical={vertical}
         style={{ padding: "8px 8px 8px 16px" }}
       >
-        <Text>{collapsed ? "" : "Ameaças"}</Text>
+        <Text>{collapsed ? "" : t('threats')}</Text>
 
         {actions
           .filter((action) => action.type === "ameacas")
@@ -285,7 +287,7 @@ export const Explore: FC<ExploreProps> = ({
         vertical={vertical}
         style={{ padding: "8px 8px 8px 16px" }}
       >
-        <Text>{collapsed ? "" : "Indicadores Ambientais"}</Text>
+        <Text>{collapsed ? "" : t('environmental_indicators')}</Text>
 
         {actions
           .filter(item => item.type === "indicadores")

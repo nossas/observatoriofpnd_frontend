@@ -3,6 +3,7 @@ import { Collapse, Flex } from "antd";
 import { InfoContent, InfoHeader, Markdown } from "components/atoms";
 import { headerIcons } from "components/molecules/Entenda";
 import { Esferas } from "services/data";
+import { useTranslation } from "react-i18next";
 
 interface ForestComparisonProps {
   infoData: any;
@@ -14,6 +15,7 @@ const ForestComparison: React.FC<ForestComparisonProps> = ({
   searchParams,
 }) => {
   const { esfera } = searchParams;
+  const { t } = useTranslation();
   const {
     recortePrefixo,
     recorteNome,
@@ -24,15 +26,30 @@ const ForestComparison: React.FC<ForestComparisonProps> = ({
   const selectedEsfera =
     typeof esfera === "number" ? Esferas[esfera as unknown as Esferas] : "";
 
-  const defaultText = `N${recortePrefixo} ${recorteNome}, **${categoriaFpndEstadualAreaPer}%** das FPND são estaduais, enquanto **${categoriaFpndFederalAreaPer}%** são federais.`;
-  const estadualText = `N${recortePrefixo} ${recorteNome}, **${categoriaFpndEstadualAreaPer}%** das FPND são estaduais.`;
-  const federalText = `N${recortePrefixo} ${recorteNome}, **${categoriaFpndFederalAreaPer}%** das FPND são federais.`;
+  const defaultText = t("fpnd_federal_state_distribution", {
+    recortePrefixo,
+    recorteNome,
+    categoriaFpndEstadualAreaPer,
+    categoriaFpndFederalAreaPer,
+  });
 
-  const message = {
-    Estadual: estadualText,
-    Federal: federalText,
-  }[selectedEsfera] || defaultText;
-  
+  const estadualText = t("fpnd_state_percentage", {
+    recortePrefixo,
+    recorteNome,
+    categoriaFpndEstadualAreaPer,
+  });
+
+  const federalText = t("fpnd_federal_percentage", {
+    recortePrefixo,
+    recorteNome,
+    categoriaFpndFederalAreaPer,
+  });
+
+  const message =
+    {
+      Estadual: estadualText,
+      Federal: federalText,
+    }[selectedEsfera] || defaultText;
 
   return (
     <Collapse
@@ -42,8 +59,8 @@ const ForestComparison: React.FC<ForestComparisonProps> = ({
         {
           label: (
             <InfoHeader
-              title="Florestas estaduais x federais"
-              description="As Florestas Públicas Não Destinadas (FPND) estão sob jurisdição dos estados ou do governo federal."
+              title={t("state_vs_federal_forests")}
+              description={t('fpnd_jurisdiction_description')}
               icon={headerIcons["florestasEstaduaisxFederais"]}
             />
           ),
