@@ -182,7 +182,7 @@ export const Mapa = () => {
               : "legendaCanto"
         }
       >
-        <Legenda title={legendData.title} bins={legendData.bins} />
+        <Legenda bins={legendData.bins} />
       </RControl.RCustom>
 
       <RControl.RCustom className="entenda">

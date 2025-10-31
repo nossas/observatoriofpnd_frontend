@@ -50,7 +50,7 @@ export const GraficoDesmatamentoAcumulado: FC<
   return (
     <Flex vertical align="center" justify="center">
       <Text strong style={{ fontSize: "14px" }}>
-        Desmatamento Acumulado de 2007 a 2023
+        Desmatamento Acumulado de 2007 a 2024
       </Text>
       <Column {...config} />
     </Flex>
