@@ -57,6 +57,18 @@ const extents = {
     -73.79487377262059, -10.99284924444386, -67.45660048523425,
     -7.116698090502462,
   ],
+  TO: [
+    -50.333, // minLongitude — aproximadamente 2° a oeste de –48.333
+    -12.183, // minLatitude — aproximadamente 2° ao sul de –10.183
+    -46.333, // maxLongitude — aproximadamente 2° a leste
+    -8.183, // maxLatitude — aproximadamente 2° ao norte
+  ],
+  MA: [
+    -47.617, // minLongitude — cerca de 2° oeste de –45.617
+    -8.183, // minLatitude — cerca de 2° ao sul de –6.183
+    -43.617, // maxLongitude — cerca de 2° leste
+    -4.183, // maxLatitude — cerca de 2° ao norte
+  ],
 };
 
 const { useBreakpoint } = Grid;
@@ -106,16 +118,18 @@ export const Mapa = () => {
         extent.length !== 4 ||
         extent.some((value) => isNaN(value) || value === undefined)
       ) {
-        return;  // Evita tentar transformar um extent inválido
+        return; // Evita tentar transformar um extent inválido
       }
-  
+
       // Garantir que a ordem das coordenadas está correta: [longitude, latitude]
       const transformedExtent = [
         ...fromLonLat([extent[0], extent[1]]), // [longitude, latitude]
         ...fromLonLat([extent[2], extent[3]]), // [longitude, latitude]
       ];
 
-      mapRef.current.ol.getView().fit(transformedExtent, mapRef.current.ol.getSize());
+      mapRef.current.ol
+        .getView()
+        .fit(transformedExtent, mapRef.current.ol.getSize());
     }
   }, [mapRef, estados]);
 
@@ -168,7 +182,7 @@ export const Mapa = () => {
               : "legendaCanto"
         }
       >
-        <Legenda title={legendData.title} bins={legendData.bins} />
+        <Legenda bins={legendData.bins} />
       </RControl.RCustom>
 
       <RControl.RCustom className="entenda">

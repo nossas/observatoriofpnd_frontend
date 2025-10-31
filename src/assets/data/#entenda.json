@@ -62,7 +62,7 @@
                     "type": "GraficoDesmatamentoRecorte"
                 },
                 {
-                    "text": "A área desmatada n{{recortePrefixo}} {{recorteNome}} aumentou **{{desmatamentoComparacaoPrimeiroAnoUltimoAnoPer}}%** de {{primeiroAno}} a {{ultimoAno}}."
+                    "text": "A área desmatada n{{recortePrefixo}} {{recorteNome}} {{verboDesmatamento}} **{{desmatamentoComparacaoPrimeiroAnoUltimoAnoPer}}%** de {{primeiroAno}} a {{ultimoAno}}."
                 },
                 {
                     "type": "GraficoDesmatamentoAcumulado"
@@ -72,10 +72,13 @@
         {
             "header": {
                 "title": "Estoque de carbono",
-                "description": "As FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} estocam **{{estoqueCarbonoTon}}** de toneladas de carbono.",
+                "description": "Estoque de carbono é o carbono que é retirado da atmosfera e armazenado em organismos vivos, no solo e em rochas.",
                 "icon": "estoqueDeCarbono"
             },
             "body": [
+                {
+                    "text": "As FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} estocam **{{estoqueCarbonoTon}}** de toneladas de carbono."
+                },
                 {
                     "text": "Isso equivale a **{{estoqueCarbonoEquivalenciaPesoTon}}** de toneladas de CO2 evitados na atmosfera.",
                     "highlighted": true,
@@ -85,8 +88,8 @@
         },
         {
             "header": {
-                "title": "Riqueza de espécies sob ameaça",
-                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndFederalMedia}}** espécies ameaçadas da fauna e flora amazônica.",
+                "title": "Riqueza de espécies ameaçadas",
+                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{#if esfera=='Federal'}}federal{{else}}lalala** espécies ameaçadas da fauna e flora amazônica.",
                 "icon": "biodiversidade"
             },
             "body": [
@@ -115,6 +118,9 @@
                 },
                 {
                     "text": "A presença de CAR em áreas florestais podem indicar grilagem, ameaçando a conservação desses ecossistemas vitais."
+                },
+                {
+                    "text": "Com base em estudo do IPAM e ABRAMPA, 44% dos casos de sobreposição de CAR em terras públicas referem-se a áreas com mais de 1.500 hectares, não se tratando de pequenas ocupações para a agricultura familiar ou de subsistência, mas possivelmente  grupos que possuem financiamento e organização."
                 },
                 {
                     "text": "Nas florestas públicas não destinadas d{{recortePrefixo}} {{recorteNome}}, para cada **{{carComparacaoDesmatamento}}** hectares de CAR, temos 1 hectare de desmatamento."

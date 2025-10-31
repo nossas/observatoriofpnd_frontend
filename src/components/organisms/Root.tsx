@@ -4,7 +4,7 @@ import { Explore, EntendaMobile } from 'components/molecules'
 import { ChevronDoubleDown, ChevronDoubleUp, Filter } from 'components/atoms'
 import { Outlet } from '@tanstack/react-router'
 import { useState } from 'react'
-import entenda from 'assets/data/entenda.json'
+import { entenda } from 'assets/data/entenda';
 
 const { Content, Sider } = Layout
 const { Text } = Typography

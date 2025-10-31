@@ -6,11 +6,10 @@ const { Text } = Typography
 const { useBreakpoint } = Grid
 
 type LegendaProps = {
-    title: String,
-    bins: Array<Object>,
+    bins: Array<Object>, 
 }
 
-export const Legenda: FC<LegendaProps> = ({title, bins}) => {
+export const Legenda: FC<LegendaProps> = ({bins}) => {
     const breakpoints = useBreakpoint()
     const [ legendaOpen, setLegendaOpen ] = useState(!breakpoints.xs)
 
@@ -29,7 +28,7 @@ export const Legenda: FC<LegendaProps> = ({title, bins}) => {
             }}>
 
             <Flex justify="space-between" align="center"  gap={8} /*style={{ background: "white" }}*/>
-                <Text strong style={{fontSize:'14px'}}>{legendaOpen ? title : 'Legenda '}</Text>
+                {/* <Text strong style={{fontSize:'14px'}}>{legendaOpen ? title : 'Legenda '}</Text> */}
                 
                 {breakpoints.xs && (
                     <Button

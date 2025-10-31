@@ -11,7 +11,7 @@ export enum Camadas {
 
 export enum Esferas {
     Estadual,
-    Federal,
+    Federal
 }
 
 type JSONValue =
@@ -23,4 +23,12 @@ type JSONValue =
 
 export type JSONObject = {
     [x: string]: JSONValue
+}
+
+export enum Actions {
+    Desmatamento,
+    EstoqueDeCarbono,
+    Biodiversidade,
+    Car,
+    Mineracao,
 }

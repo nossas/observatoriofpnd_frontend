@@ -22,7 +22,13 @@ p {
 
 .ant-collapse-header .ant-collapse-arrow {
     display: none;
-  }
+}
+
+.noCollapse {
+    background-color: rgba(0,0,0,0.02);
+    padding: 14px;
+    border-radius: 12px;
+}
 
 @font-face {
     font-family: 'Avenir';
