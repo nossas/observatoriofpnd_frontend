@@ -51,5 +51,30 @@
   "fpnd_threatened_species_average": "UPFs {{selectedEsfera}} in {{recortePrefixo}} **{{recorteNome}}** host an average of **{{biodiversidadeFpndTodasMedia}}** threatened species of Amazonian fauna and flora.",
   "fpnd_total_area": "There are **{{entendaFpndAreaTotalHa}}** hectares of undesignated public forests {{selectedEsfera}} located in {{recortePrefixo}} {{recorteNome}}.",
   "fpnd_equivalent_football_fields": "This is equivalent to **{{entendaFpndEquivalenciaFutebolQtd}}** football fields.",
-  "fpnd_with_scope": "UPF {{esfera}} in {{recorteTerritorial}}"
+  "fpnd_with_scope": "UPF {{esfera}} in {{recorteTerritorial}}",
+  "understand": "Understand",
+  "fpnd_description": "Undesignated Public Forests (UPFs) are forest areas that belong to the State but have not yet been assigned a specific use. They are the most unprotected areas among Brazilian biomes.",
+  "number": {
+    "thousand": "thousand",
+    "million": "million",
+    "billion": "billion",
+    "trillion": "trillion",
+    "quadrillion": "quadrillion",
+    "quintillion": "quintillion"
+  },
+  "hectare": "Hectare",
+  "month": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  }
 }

@@ -51,5 +51,30 @@
   "fpnd_threatened_species_average": "Los BPND {{selectedEsfera}} en {{recortePrefixo}} **{{recorteNome}}** albergan en promedio **{{biodiversidadeFpndTodasMedia}}** especies amenazadas de la fauna y flora amazónica.",
   "fpnd_total_area": "Hay **{{entendaFpndAreaTotalHa}}** hectáreas de bosques públicos no asignados {{selectedEsfera}} presentes en {{recortePrefixo}} {{recorteNome}}.",
   "fpnd_equivalent_football_fields": "Equivale a **{{entendaFpndEquivalenciaFutebolQtd}}** campos de fútbol.",
-  "fpnd_with_scope": "BPND {{esfera}} en {{recorteTerritorial}}"
+  "fpnd_with_scope": "BPND {{esfera}} en {{recorteTerritorial}}",
+  "understand": "Entender",
+  "fpnd_description": "Los Bosques Públicos No Asignados (BPND) son áreas forestales que pertenecen al Estado pero que aún no tienen un uso definido. Son las áreas más desprotegidas de los biomas brasileños.",
+  "number": {
+    "thousand": "mil",
+    "million": "millones",
+    "billion": "mil millones",
+    "trillion": "billones",
+    "quadrillion": "mil billones",
+    "quintillion": "trillones"
+  },
+  "hectare": "Hectárea",
+  "month": {
+    "january": "Enero",
+    "february": "Febrero",
+    "march": "Marzo",
+    "april": "Abril",
+    "may": "Mayo",
+    "june": "Junio",
+    "july": "Julio",
+    "august": "Agosto",
+    "september": "Septiembre",
+    "october": "Octubre",
+    "november": "Noviembre",
+    "december": "Diciembre"
+  }
 }

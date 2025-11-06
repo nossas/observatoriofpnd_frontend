@@ -1,7 +1,7 @@
 import { Flex, Typography } from "antd"
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
-import { formatNumber } from "services/utils"
+import { useFormatNumber } from "services/utils/formatNumber";
 import { useTranslation } from "react-i18next";
 
 const {Text} = Typography
@@ -18,6 +18,8 @@ type graficoCARprops = {
 
 export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
     const { t } = useTranslation();
+    const { formatNumber } = useFormatNumber();
+
     const config = {
         data: data,
         xField: 'xField',
@@ -35,7 +37,7 @@ export const GraficoCARSobreposicao:FC<graficoCARprops> = ({data}) => {
         },
         axis: {
             y: {
-                title: 'Hectare',
+                title: t('hectare'),
                 titleSpacing: -5,
                 labelFormatter: '~s' ,
             },

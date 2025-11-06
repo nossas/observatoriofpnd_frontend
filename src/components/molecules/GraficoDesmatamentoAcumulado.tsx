@@ -1,8 +1,8 @@
 import { Column } from "@ant-design/plots";
-import { formatNumber } from "services/utils";
 import { FC } from "react";
 import { Flex, Typography } from "antd";
 import { useTranslation } from "react-i18next";
+import { useFormatNumber } from "services/utils/formatNumber";
 
 const { Text } = Typography;
 
@@ -24,6 +24,7 @@ export const GraficoDesmatamentoAcumulado: FC<
   graficoDesmatamentoAcumuladoProps
 > = ({ data }) => {
   const { t } = useTranslation();
+  const { formatNumber } = useFormatNumber();
 
   const config = {
     data: data,
@@ -38,7 +39,7 @@ export const GraficoDesmatamentoAcumulado: FC<
     },
     axis: {
       y: {
-        title: "Hectare",
+        title: t('hectare'),
         titleSpacing: -5,
         labelFormatter: "~s",
       },

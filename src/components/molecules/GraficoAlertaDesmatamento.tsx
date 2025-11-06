@@ -1,8 +1,8 @@
 import { Column } from '@ant-design/plots';
 import { FC } from "react"
-import { formatNumber } from "services/utils"
 import { Flex, Typography } from "antd"
 import { useTranslation } from 'react-i18next';
+import { useFormatNumber } from 'services/utils/formatNumber';
 
 const {Text} = Typography
 
@@ -18,6 +18,7 @@ type graficoAlertaProps = {
 //https://ant--design--charts-antgroup-com.translate.goog/en/options/plots/component/axis?_x_tr_sl=pt&_x_tr_tl=en&_x_tr_hl=pt-BR&_x_tr_pto=wapp&_x_tr_hist=true
 export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
     const { t } = useTranslation();
+    const { formatNumber } = useFormatNumber();
 
     const config = {
         data: data,
@@ -37,7 +38,7 @@ export const GraficoAlertaDesmatamento : FC<graficoAlertaProps> = ({data}) => {
         },
         axis: {
             y: {
-                title: 'Hectare',
+                title: t('hectare'),
                 titleSpacing: -5,
                 labelFormatter: '~s' ,
             },

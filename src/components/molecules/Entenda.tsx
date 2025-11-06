@@ -21,8 +21,6 @@ import {
 } from "components/atoms";
 import { useCallback } from "react";
 import { useLoaderData, useSearch } from "@tanstack/react-router";
-import { substitute } from "services/utils";
-import { entenda } from "assets/data/entenda";
 import { useBusiness } from "services/business";
 import { Esferas } from "services/data";
 import ForestComparison from "./Items/ForestComparison";
@@ -134,11 +132,8 @@ export const Entenda = () => {
               {
                 label: (
                   <InfoHeader
-                    title={entenda.main.header.title}
-                    description={substitute(
-                      entenda.main.header.description,
-                      newInfoData
-                    )}
+                    title={t('understand')}
+                    description={t('fpnd_description')}
                     padding="0px 0px 0px 8px"
                   />
                 ),
@@ -190,135 +185,6 @@ export const Entenda = () => {
                         />
                       )}
                     </Flex>
-
-                    {/* <Collapse
-                      bordered={false}
-                      expandIcon={getExpandIcon}
-                      expandIconPosition="end"
-                      style={{ padding: 0 }}
-                      items={entenda.details.reduce(
-                        (items: any, item: any, index: number) => {
-                          return items.concat({
-                            key: index,
-                            label: (
-                              <InfoHeader
-                                title={item.header.title}
-                                description={substitute(
-                                  item.header.description,
-                                  newInfoData
-                                )}
-                                //@ts-ignore
-                                icon={headerIcons[item.header.icon]}
-                              />
-                            ),
-                            children: (
-                              <Flex gap={24} vertical>
-                                {item?.body.reduce(
-                                  (children: any, child: any, key: number) => {
-                                    let component = undefined;
-                                    switch (child?.type) {
-                                      case "AlertaGrilagem":
-                                        component = (
-                                          <AlertaGrilagem
-                                            key={key}
-                                            icon={
-                                              <ExclamationTriangleFill
-                                                style={{
-                                                  color: "#c32c18",
-                                                  fontSize: "24px",
-                                                }}
-                                              />
-                                            }
-                                          />
-                                        );
-                                        break;
-                                      case "GraficoAlertaDesmatamento":
-                                        if (
-                                          newInfoData &&
-                                          newInfoData.alertaMensalGraficoHistoricoDesmatamento
-                                        ) {
-                                          component = (
-                                            <GraficoAlertaDesmatamento
-                                              key={key}
-                                              data={
-                                                newInfoData.alertaMensalGraficoHistoricoDesmatamento
-                                              }
-                                            />
-                                          );
-                                        }
-                                        break;
-                                      case "GraficoCARSobreposicao":
-                                        if (
-                                          newInfoData &&
-                                          newInfoData.carGrafico
-                                        )
-                                          component = (
-                                            <GraficoCARSobreposicao
-                                              key={key}
-                                              data={newInfoData.carGrafico}
-                                            />
-                                          );
-                                        break;
-                                      case "GraficoDesmatamentoAcumulado":
-                                        if (
-                                          newInfoData &&
-                                          newInfoData.desmatamentoGraficoDesmatamentoAcumulado
-                                        ) {
-                                          component = (
-                                            <GraficoDesmatamentoAcumulado
-                                              key={key}
-                                              data={
-                                                newInfoData.desmatamentoGraficoDesmatamentoAcumulado
-                                              }
-                                            />
-                                          );
-                                        }
-                                        break;
-                                      case "GraficoDesmatamentoRecorte":
-                                        if (
-                                          newInfoData &&
-                                          newInfoData.desmatamentoGraficoFpndEstaduais
-                                        ) {
-                                          component = (
-                                            <GraficoDesmatamentoRecorte
-                                              key={key}
-                                              data={
-                                                newInfoData.desmatamentoGraficoFpndEstaduais
-                                              }
-                                              recorteTerritorial={`${newInfoData.recortePrefixo} ${newInfoData.recorteNome}`}
-                                            />
-                                          );
-                                        }
-                                        break;
-                                      default:
-                                        component = (
-                                          <InfoContent
-                                            key={key}
-                                            highlighted={child?.highlighted}
-                                            //@ts-ignore
-                                            icon={highlightedIcons[child?.icon]}
-                                          >
-                                            <Markdown
-                                              text={substitute(
-                                                child.text,
-                                                newInfoData
-                                              )}
-                                              highlighted={child?.highlighted}
-                                            />
-                                          </InfoContent>
-                                        );
-                                    }
-                                    return children.concat(component);
-                                  },
-                                  []
-                                )}
-                              </Flex>
-                            ),
-                          });
-                        },
-                        []
-                      )}
-                    /> */}
                   </Flex>
                 ),
               },

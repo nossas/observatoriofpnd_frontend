@@ -51,5 +51,30 @@
   "fpnd_threatened_species_average": "As FPND {{selectedEsfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{biodiversidadeFpndTodasMedia}}** espécies ameaçadas da fauna e flora amazônica.",
   "fpnd_total_area": "Há **{{entendaFpndAreaTotalHa}}** de hectares de florestas públicas não-destinadas {{selectedEsfera}} presentes n{{recortePrefixo}} {{recorteNome}}.",
   "fpnd_equivalent_football_fields": "Isso equivale a **{{entendaFpndEquivalenciaFutebolQtd}}** de campos de futebol.",
-  "fpnd_with_scope": "FPND {{esfera}} n{{recorteTerritorial}}"
+  "fpnd_with_scope": "FPND {{esfera}} n{{recorteTerritorial}}",
+  "understand": "Entenda",
+  "fpnd_description": "Florestas Públicas Não Destinadas (FPND) são áreas de florestas que pertencem ao Estado, mas que ainda não tiveram uso definido. Elas são as áreas mais desprotegidas dos biomas brasileiros.",
+  "number": {
+    "thousand": "mil",
+    "million": "milhões",
+    "billion": "bilhões",
+    "trillion": "trilhões",
+    "quadrillion": "quatrilhões",
+    "quintillion": "quintilhões"
+  },
+  "hectare": "Hectare",
+  "month": {
+    "january": "Janeiro",
+    "february": "Fevereiro",
+    "march": "Março",
+    "april": "Abril",
+    "may": "Maio",
+    "june": "Junho",
+    "july": "Julho",
+    "august": "Agosto",
+    "september": "Setembro",
+    "october": "Outubro",
+    "november": "Novembro",
+    "december": "Dezembro"
+  }
 }

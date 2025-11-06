@@ -4,7 +4,6 @@ import { Explore, EntendaMobile } from 'components/molecules'
 import { ChevronDoubleDown, ChevronDoubleUp, Filter } from 'components/atoms'
 import { Outlet } from '@tanstack/react-router'
 import { useState } from 'react'
-import { entenda } from 'assets/data/entenda';
 import { useTranslation } from 'react-i18next';
 
 const { Content, Sider } = Layout
@@ -93,7 +92,7 @@ export const Root = () => {
                 {breakpoints.xs && (
                     <Flex style={{ flexShrink: 0, minHeight: '112px', alignItems: 'center' , background: colorBgContainer, padding: '0px, 0px, 0px, 0px', lineHeight: '112px', borderRadius:'12px 12px 0px 0px'}}>
                         <Drawer
-                            title={<Text strong style={{padding:'0 8px 0 24px'}}>Entenda</Text>}
+                            title={<Text strong style={{padding:'0 8px 0 24px'}}>{t('understand')}</Text>}
                             placement='bottom'
                             open={entendaMobileOpen}
                             height='90%'
@@ -104,14 +103,14 @@ export const Root = () => {
                                 <ChevronDoubleUp/> 
                             )}
                         >
-                            <p style={{padding:'0px 24px 0px 24px'}}>{entenda.main.header.description}</p>
+                            <p style={{padding:'0px 24px 0px 24px'}}>{t('fpnd_description')}</p>
 
                             <EntendaMobile/>
                         </Drawer>
 
                         <Flex vertical style={{minWidth:'376px', minHeight:'112px', padding:'0 0 0 8px'}}>
                             <Flex align='center' justify='space-between' style={{minHeight:'52px', padding:'16px 8px 16px 0'}}>
-                                <Text strong style={{padding:'8px 8px 0 16px'}}>Entenda</Text>
+                                <Text strong style={{padding:'8px 8px 0 16px'}}>{t('understand')}</Text>
 
                                 <Button
                                     type="text"
@@ -121,7 +120,7 @@ export const Root = () => {
                                 />
                             </Flex>
 
-                            <Text style={{minHeight:'60px', padding:'0px 16px 8px 16px'}}>{entenda.main.header.description}</Text>
+                            <Text style={{minHeight:'60px', padding:'0px 16px 8px 16px'}}>{t('fpnd_description')}</Text>
                         </Flex>
                     </Flex>
                 )}
