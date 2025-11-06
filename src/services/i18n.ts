@@ -13,7 +13,11 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en_US",
+  lng: "pt_BR",
+  fallbackLng: "pt_BR",
+  interpolation: {
+    escapeValue: false,
+  },
 });
 
 export default i18n;
