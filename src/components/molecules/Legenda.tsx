@@ -1,7 +1,6 @@
 import { Card, Tag, Flex, Typography, Button, Grid } from "antd";
 import { ChevronDoubleUp, ChevronDoubleDown} from '../atoms/index'
 import { FC, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 const { Text } = Typography
 const { useBreakpoint } = Grid
@@ -12,7 +11,6 @@ type LegendaProps = {
 
 export const Legenda: FC<LegendaProps> = ({bins}) => {
     const breakpoints = useBreakpoint()
-    const { t } = useTranslation();
     const [ legendaOpen, setLegendaOpen ] = useState(!breakpoints.xs)
 
     return(
