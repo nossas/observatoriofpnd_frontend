@@ -25,7 +25,6 @@
   "deforested_area": "Deforested Area",
   "car_area_overlapping_fpnd": "CAR Area Overlapping UPFs",
   "cumulative_deforestation": "Cumulative Deforestation from {{initial_year}} to {{final_year}}",
-  "note_fpnd_over_10k_hectares": "*Only UPF records larger than 10,000 hectares are considered.",
   "irregular_car_overlap_fpnd": "There are **{{carSobreposicaoFpndAreaHa}}** hectares of **irregular** Rural Environmental Registry (CAR) areas in {{recortePrefixo}} {{recorteNome}}, overlapping UPFs {{selectedEsfera}}.",
   "equivalent_football_fields": "This is equivalent to **{{carSobreposicaoFpndEquivalenciaFutebolQtd}}** football fields.",
   "car_presence_warning": "The presence of CAR in forest areas may indicate land grabbing, threatening the conservation of these vital ecosystems.",

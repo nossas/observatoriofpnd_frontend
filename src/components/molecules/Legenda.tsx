@@ -75,8 +75,6 @@ export const Legenda: FC<LegendaProps> = ({bins}) => {
                             {Object.values(data)[0]}
                         </Text>
                     ))}
-
-                    <Text style={{fontSize: 12}}>{t('note_fpnd_over_10k_hectares')}</Text>
                 </Flex>
             )}
         </Card>

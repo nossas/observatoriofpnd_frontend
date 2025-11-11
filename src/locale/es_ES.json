@@ -25,7 +25,6 @@
   "deforested_area": "Área deforestada",
   "car_area_overlapping_fpnd": "Área de CAR superpuesta a los BPND",
   "cumulative_deforestation": "Deforestación Acumulada de {{initial_year}} a {{final_year}}",
-  "note_fpnd_over_10k_hectares": "*Se consideran los registros de BPND mayores de 10 mil hectáreas.",
   "irregular_car_overlap_fpnd": "Hay **{{carSobreposicaoFpndAreaHa}}** hectáreas de **CAR irregulares** en {{recortePrefixo}} {{recorteNome}}, superpuestas a los BPND {{selectedEsfera}}.",
   "equivalent_football_fields": "Equivale a **{{carSobreposicaoFpndEquivalenciaFutebolQtd}}** campos de fútbol.",
   "car_presence_warning": "La presencia de CAR en áreas forestales puede indicar acaparamiento de tierras, amenazando la conservación de estos ecosistemas vitales.",

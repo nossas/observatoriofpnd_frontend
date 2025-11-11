@@ -33,6 +33,7 @@ import MiningExploration from "./Items/MiningExploration";
 import UnderstandContent from "./Items/UnderstandContent";
 import { GraphDownArrow } from "components/atoms/Icons";
 import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
 
 const url = import.meta.env.VITE_URL_COMO_AGIR;
 const highLitghtIconStyle = { color: "#d8952a", fontSize: "32px" };
@@ -75,6 +76,18 @@ export const parseToPlural = (esfera: Esferas | string): string => {
   return map[esfera as keyof typeof map] ?? "";
 };
 
+export function getVerboDesmatamento(
+  percent: string | number,
+  t: TFunction
+): string {
+  const value =
+    typeof percent === "string"
+      ? parseFloat(percent.replace(",", "."))
+      : percent;
+  if (isNaN(value)) return "";
+  return value >= 0 ? t("increased") : t("reduced");
+}
+
 export const Entenda = () => {
   const infoData = useLoaderData({ from: "/" });
   const searchParams = useSearch({ from: "/" });
@@ -92,20 +105,12 @@ export const Entenda = () => {
     );
   }, []);
 
-  function getVerboDesmatamento(percent: string | number): string {
-    const value =
-      typeof percent === "string"
-        ? parseFloat(percent.replace(",", "."))
-        : percent;
-    if (isNaN(value)) return "";
-    return value >= 0 ? t('increased') : t('reduced');
-  }
-
   const newInfoData = {
     ...infoData,
     esfera: t(parseToPlural(infoData?.esfera ?? "")),
     verboDesmatamento: getVerboDesmatamento(
-      infoData.desmatamentoComparacaoPrimeiroAnoUltimoAnoPer
+      infoData.desmatamentoComparacaoPrimeiroAnoUltimoAnoPer,
+      t
     ),
   };
 
@@ -132,8 +137,8 @@ export const Entenda = () => {
               {
                 label: (
                   <InfoHeader
-                    title={t('understand')}
-                    description={t('fpnd_description')}
+                    title={t("understand")}
+                    description={t("fpnd_description")}
                     padding="0px 0px 0px 8px"
                   />
                 ),
@@ -155,15 +160,24 @@ export const Entenda = () => {
                       {(typeof camada === "undefined" ||
                         Number(camada) === 2) && (
                         <>
-                          <MonthlyDeforestationAlert infoData={newInfoData} searchParams={searchParams} />
+                          <MonthlyDeforestationAlert
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
 
-                          <Deforestation infoData={newInfoData} searchParams={searchParams} />
+                          <Deforestation
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
                         </>
                       )}
 
                       {(typeof camada === "undefined" ||
                         Number(camada) === 3) && (
-                        <CarbonStock infoData={newInfoData} searchParams={searchParams} />
+                        <CarbonStock
+                          infoData={newInfoData}
+                          searchParams={searchParams}
+                        />
                       )}
 
                       {(typeof camada === "undefined" ||
@@ -175,7 +189,12 @@ export const Entenda = () => {
                       )}
 
                       {(typeof camada === "undefined" ||
-                        Number(camada) === 5) && <CAR infoData={newInfoData} searchParams={searchParams} />}
+                        Number(camada) === 5) && (
+                        <CAR
+                          infoData={newInfoData}
+                          searchParams={searchParams}
+                        />
+                      )}
 
                       {(typeof camada === "undefined" ||
                         Number(camada) === 6) && (
@@ -205,7 +224,7 @@ export const Entenda = () => {
                 target="_blank"
                 type="primary"
               >
-                {t('how_to_act')}
+                {t("how_to_act")}
               </Button>
             )}
           </Flex>
