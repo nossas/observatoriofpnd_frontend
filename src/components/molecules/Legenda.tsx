@@ -19,7 +19,7 @@ export const Legenda: FC<LegendaProps> = ({bins}) => {
         <Card size="small" style={
             breakpoints.xs ? {
                 minWidth: legendaOpen ? 187 : 83,
-                minHeight: legendaOpen ? 162 : 30,
+                minHeight: 30,
                 borderRadius: '6px',
                 background: "white" 
             } : {

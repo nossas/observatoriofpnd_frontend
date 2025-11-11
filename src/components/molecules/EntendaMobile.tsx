@@ -1,31 +1,5 @@
 import { Button, Collapse, Flex, Typography } from "antd";
-import {
-  AlertaGrilagem,
-  BiodiversidadeIcon,
-  BugFill,
-  CloudFog,
-  ExclamationTriangleFill,
-  GraphUpArrow,
-  SignPostFill,
-  Tree,
-  VectorCampo,
-  VectorDesmatamentoFill,
-  VectorMineracao,
-  Wind,
-  XDiamondFill,
-} from "components/atoms";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import { InfoContent, InfoHeader, Markdown } from "components/atoms";
-import {
-  GraficoAlertaDesmatamento,
-  GraficoCARSobreposicao,
-  GraficoDesmatamentoAcumulado,
-  GraficoDesmatamentoRecorte,
-} from ".";
-import { useCallback } from "react";
 import { useLoaderData, useSearch } from "@tanstack/react-router";
-import { substitute } from "services/utils";
-import { entenda } from "assets/data/entenda";
 import { getVerboDesmatamento, parseToPlural } from "./Entenda";
 import { useTranslation } from "react-i18next";
 import UnderstandContent from "./Items/UnderstandContent";
@@ -38,24 +12,6 @@ import CAR from "./Items/CAR";
 import MiningExploration from "./Items/MiningExploration";
 
 const url = import.meta.env.VITE_URL_COMO_AGIR;
-const highLitghtIconStyle = { color: "#d8952a", fontSize: "32px" };
-const headerIcons = {
-  florestasEstaduaisxFederais: <XDiamondFill />,
-  alertaMensalDeDesmatamento: <ExclamationTriangleFill />,
-  desmatamento: <VectorDesmatamentoFill />,
-  estoqueDeCarbono: <Wind />,
-  biodiversidade: <BugFill />,
-  car: <SignPostFill />,
-  mineracao: <VectorMineracao />,
-};
-
-const highlightedIcons = {
-  arvore: <Tree style={highLitghtIconStyle} />,
-  biodiversidade: <BiodiversidadeIcon style={highLitghtIconStyle} />,
-  co2: <CloudFog style={highLitghtIconStyle} />,
-  campoDeFutebol: <VectorCampo style={highLitghtIconStyle} />,
-  grafico: <GraphUpArrow style={highLitghtIconStyle} />,
-};
 
 const { Text } = Typography;
 
@@ -64,12 +20,6 @@ export const EntendaMobile = () => {
   const infoData = useLoaderData({ from: "/" });
   const searchParams = useSearch({ from: "/" });
   const { camada } = searchParams;
-
-  //console.log('infoData', infoData)
-
-  const getExpandIcon = useCallback((panelProps: any) => {
-    return panelProps.isActive ? <UpOutlined /> : <DownOutlined />;
-  }, []);
 
   const newInfoData = {
     ...infoData,
