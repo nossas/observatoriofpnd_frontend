@@ -1,14 +1,31 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="manifest" href="/site.webmanifest">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <title>Observatório das Florestas Públicas</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>Observatório das Florestas Públicas</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C9C12WXMBZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    <body style="margin: 0%;">
-        <div id="root"></div>
-        <script type="module" src="/src/main.tsx"></script>
-    </body>
+      gtag("config", "G-C9C12WXMBZ");
+    </script>
+  </head>
+
+  <body style="margin: 0%">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
