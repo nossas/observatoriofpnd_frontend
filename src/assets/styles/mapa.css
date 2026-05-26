@@ -25,11 +25,16 @@
 }
 
 .ajuda {
-    top: auto;
+    position: absolute;
     bottom: 12px;
     left: 44px;
-    width: 32px;
-    height: 32px;
+    display: inline-flex;
+    gap: 8px;
+}
+
+.ajuda-buttons {
+    display: inline-flex;
+    gap: 8px;
 }
 
 .legenda {
