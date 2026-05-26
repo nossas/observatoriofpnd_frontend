@@ -20,6 +20,7 @@ export const EntendaMobile = () => {
   const infoData = useLoaderData({ from: "/" });
   const searchParams = useSearch({ from: "/" });
   const { camada } = searchParams;
+  const hasFilters = camada !== undefined;
 
   const newInfoData = {
     ...infoData,
@@ -50,61 +51,63 @@ export const EntendaMobile = () => {
                       searchParams={searchParams}
                     />
 
-                    <Flex gap={8} vertical>
-                      {!camada && (
-                        <ForestComparison
-                          infoData={newInfoData}
-                          searchParams={searchParams}
-                        />
-                      )}
-
-                      {(typeof camada === "undefined" ||
-                        Number(camada) === 2) && (
-                        <>
-                          <MonthlyDeforestationAlert
+                    {hasFilters && (
+                      <Flex gap={8} vertical>
+                        {!camada && (
+                          <ForestComparison
                             infoData={newInfoData}
                             searchParams={searchParams}
                           />
+                        )}
 
-                          <Deforestation
+                        {(typeof camada === "undefined" ||
+                          Number(camada) === 2) && (
+                          <>
+                            <MonthlyDeforestationAlert
+                              infoData={newInfoData}
+                              searchParams={searchParams}
+                            />
+
+                            <Deforestation
+                              infoData={newInfoData}
+                              searchParams={searchParams}
+                            />
+                          </>
+                        )}
+
+                        {(typeof camada === "undefined" ||
+                          Number(camada) === 3) && (
+                          <CarbonStock
                             infoData={newInfoData}
                             searchParams={searchParams}
                           />
-                        </>
-                      )}
+                        )}
 
-                      {(typeof camada === "undefined" ||
-                        Number(camada) === 3) && (
-                        <CarbonStock
-                          infoData={newInfoData}
-                          searchParams={searchParams}
-                        />
-                      )}
+                        {(typeof camada === "undefined" ||
+                          Number(camada) === 4) && (
+                          <SpeciesRichness
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
+                        )}
 
-                      {(typeof camada === "undefined" ||
-                        Number(camada) === 4) && (
-                        <SpeciesRichness
-                          infoData={newInfoData}
-                          searchParams={searchParams}
-                        />
-                      )}
+                        {(typeof camada === "undefined" ||
+                          Number(camada) === 5) && (
+                          <CAR
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
+                        )}
 
-                      {(typeof camada === "undefined" ||
-                        Number(camada) === 5) && (
-                        <CAR
-                          infoData={newInfoData}
-                          searchParams={searchParams}
-                        />
-                      )}
-
-                      {(typeof camada === "undefined" ||
-                        Number(camada) === 6) && (
-                        <MiningExploration
-                          infoData={newInfoData}
-                          searchParams={searchParams}
-                        />
-                      )}
-                    </Flex>
+                        {(typeof camada === "undefined" ||
+                          Number(camada) === 6) && (
+                          <MiningExploration
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
+                        )}
+                      </Flex>
+                    )}
                   </Flex>
                 ),
               },
