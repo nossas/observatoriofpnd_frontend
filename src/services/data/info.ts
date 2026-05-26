@@ -105,7 +105,8 @@ const _getUrl = (
   }
 
   if (fpnd !== undefined) {
-    url += `&fpnd=${fpnd}`;
+    const hasQuery = camada !== undefined || esfera !== undefined || (estados !== undefined && estados.length > 0);
+    url += hasQuery ? `&fpnd=${fpnd}` : `?fpnd=${fpnd}`;
   }
 
   return encodeURI(url);
