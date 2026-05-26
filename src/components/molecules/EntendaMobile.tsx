@@ -111,6 +111,8 @@ export const EntendaMobile = () => {
             ]}
           />
           <Flex
+            vertical
+            gap={8}
             style={{
               backgroundColor: "white",
               borderRadius: "0 0 10px 10px",
@@ -126,6 +128,16 @@ export const EntendaMobile = () => {
             >
               <Text strong style={{ fontSize: "16px", color: "#0C4921" }}>
                 {t("how_to_act")}
+              </Text>
+            </Button>
+            <Button
+              href="https://deolhonasflorestaspublicas.org.br"
+              ghost
+              style={{ fontWeight: "bold", width: "100%", borderRadius: 12 }}
+              type="primary"
+            >
+              <Text strong style={{ fontSize: "16px", color: "#0C4921" }}>
+                Retornar ao site
               </Text>
             </Button>
           </Flex>

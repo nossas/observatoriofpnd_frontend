@@ -210,6 +210,8 @@ export const Entenda = () => {
             ]}
           />
           <Flex
+            vertical
+            gap={8}
             style={{
               backgroundColor: "white",
               borderRadius: "0 0 10px 10px",
@@ -217,15 +219,25 @@ export const Entenda = () => {
             }}
           >
             {entendaIsOpen && (
-              <Button
-                href={url}
-                ghost
-                style={{ fontWeight: "bold", width: "100%", borderRadius: 10 }}
-                target="_blank"
-                type="primary"
-              >
-                {t("how_to_act")}
-              </Button>
+              <>
+                <Button
+                  href={url}
+                  ghost
+                  style={{ fontWeight: "bold", width: "100%", borderRadius: 10 }}
+                  target="_blank"
+                  type="primary"
+                >
+                  {t("how_to_act")}
+                </Button>
+                <Button
+                  href="https://deolhonasflorestaspublicas.org.br"
+                  ghost
+                  style={{ fontWeight: "bold", width: "100%", borderRadius: 10 }}
+                  type="primary"
+                >
+                  Retornar ao site
+                </Button>
+              </>
             )}
           </Flex>
         </Flex>
