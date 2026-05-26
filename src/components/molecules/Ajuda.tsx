@@ -1,30 +1,42 @@
-import { Button } from "antd";
-import { QuestionCircleFilled } from '@ant-design/icons';
-import { Bug } from "components/atoms";
+import { Button, Flex } from "antd";
+import { HomeOutlined, BugOutlined, ArrowRightOutlined } from '@ant-design/icons';
 
-const url = import.meta.env.VITE_URL_AJUDA;
-const reportUrl = "https://deolhonasflorestaspublicas.org.br/reportar-um-problema/";
+const urlHome = "https://deolhonasflorestaspublicas.org.br/";
+const urlComoAgir = import.meta.env.VITE_URL_COMO_AGIR;
+const urlReportar = "https://deolhonasflorestaspublicas.org.br/reportar-um-problema/";
 
 export const Ajuda = () => {
     return (
-        <div className="ajuda-buttons">
+        <Flex gap={2} className="ajuda-buttons">
             <Button
-                href={url}
-                icon={<QuestionCircleFilled />}
+                href={urlHome}
+                icon={<HomeOutlined />}
                 target="_blank"
                 rel="noreferrer"
                 type="default"
                 style={{ width: '32px', height: '32px' }}
+                title="Home"
             />
+            
             <Button
-                href={reportUrl}
-                icon={<Bug style={{ width: 16, height: 16 }} />}
+                href={urlReportar}
+                icon={<BugOutlined />}
                 target="_blank"
                 rel="noreferrer"
                 type="default"
                 style={{ width: '32px', height: '32px' }}
                 title="Reportar um problema"
             />
-        </div>
+
+            <Button
+                href={urlComoAgir}
+                icon={<ArrowRightOutlined />}
+                target="_blank"
+                rel="noreferrer"
+                type="default"
+                style={{ width: '32px', height: '32px' }}
+                title="Como agir"
+            />
+        </Flex>
     );
 }

@@ -302,6 +302,11 @@ export const Explore: FC<ExploreProps> = ({
             />
           ))}
       </Flex>
+
+      <Divider
+        type={vertical ? "horizontal" : "vertical"}
+        style={{ marginTop: "10px", marginBottom: "10px" }}
+      />
     </>
   );
 };

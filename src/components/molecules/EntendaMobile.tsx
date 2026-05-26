@@ -1,4 +1,4 @@
-import { Button, Collapse, Flex, Typography } from "antd";
+import { Collapse, Flex } from "antd";
 import { useLoaderData, useSearch } from "@tanstack/react-router";
 import { getVerboDesmatamento, parseToPlural } from "./Entenda";
 import { useTranslation } from "react-i18next";
@@ -10,10 +10,6 @@ import CarbonStock from "./Items/CarbonStock";
 import SpeciesRichness from "./Items/SpeciesRichness";
 import CAR from "./Items/CAR";
 import MiningExploration from "./Items/MiningExploration";
-
-const url = import.meta.env.VITE_URL_COMO_AGIR;
-
-const { Text } = Typography;
 
 export const EntendaMobile = () => {
   const { t } = useTranslation();
@@ -113,37 +109,6 @@ export const EntendaMobile = () => {
               },
             ]}
           />
-          <Flex
-            vertical
-            gap={8}
-            style={{
-              backgroundColor: "white",
-              borderRadius: "0 0 10px 10px",
-              padding: "10px",
-            }}
-          >
-            <Button
-              href={url}
-              ghost
-              style={{ fontWeight: "bold", width: "100%", borderRadius: 12 }}
-              target="_blank"
-              type="primary"
-            >
-              <Text strong style={{ fontSize: "16px", color: "#0C4921" }}>
-                {t("how_to_act")}
-              </Text>
-            </Button>
-            <Button
-              href="https://deolhonasflorestaspublicas.org.br"
-              ghost
-              style={{ fontWeight: "bold", width: "100%", borderRadius: 12 }}
-              type="primary"
-            >
-              <Text strong style={{ fontSize: "16px", color: "#0C4921" }}>
-                Retornar ao site
-              </Text>
-            </Button>
-          </Flex>
         </>
       )}
     </>

@@ -1,4 +1,4 @@
-import { Button, Collapse, Flex } from "antd";
+import { Collapse, Flex } from "antd";
 import {
   BiodiversidadeIcon,
   BugFill,
@@ -35,7 +35,6 @@ import { GraphDownArrow } from "components/atoms/Icons";
 import { useTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 
-const url = import.meta.env.VITE_URL_COMO_AGIR;
 const highLitghtIconStyle = { color: "#d8952a", fontSize: "32px" };
 
 export const headerIcons = {
@@ -130,7 +129,7 @@ export const Entenda = () => {
             expandIconPosition="end"
             style={{
               background: "white",
-              borderRadius: entendaIsOpen ? "12px 12px 0 0" : undefined,
+              borderRadius: "12px",
               overflowY: "auto",
               width: 354,
             }}
@@ -212,37 +211,6 @@ export const Entenda = () => {
               },
             ]}
           />
-          <Flex
-            vertical
-            gap={8}
-            style={{
-              backgroundColor: "white",
-              borderRadius: "0 0 10px 10px",
-              padding: "10px",
-            }}
-          >
-            {entendaIsOpen && (
-              <>
-                <Button
-                  href={url}
-                  ghost
-                  style={{ fontWeight: "bold", width: "100%", borderRadius: 10 }}
-                  target="_blank"
-                  type="primary"
-                >
-                  {t("how_to_act")}
-                </Button>
-                <Button
-                  href="https://deolhonasflorestaspublicas.org.br"
-                  ghost
-                  style={{ fontWeight: "bold", width: "100%", borderRadius: 10 }}
-                  type="primary"
-                >
-                  Retornar ao site
-                </Button>
-              </>
-            )}
-          </Flex>
         </Flex>
       )}
     </>
