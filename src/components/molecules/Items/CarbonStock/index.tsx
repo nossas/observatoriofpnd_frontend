@@ -37,6 +37,7 @@ const CarbonStock: React.FC<CarbonStockProps> = ({
     <Collapse
       bordered={false}
       expandIconPosition="end"
+      style={{ background: "rgba(0, 0, 0, 0.05)" }}
       items={[
         {
           label: (

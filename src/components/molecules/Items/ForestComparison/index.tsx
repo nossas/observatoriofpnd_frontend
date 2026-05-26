@@ -55,6 +55,7 @@ const ForestComparison: React.FC<ForestComparisonProps> = ({
     <Collapse
       bordered={false}
       expandIconPosition="end"
+      style={{ background: "rgba(0, 0, 0, 0.05)" }}
       items={[
         {
           label: (
