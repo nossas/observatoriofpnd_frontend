@@ -48,7 +48,7 @@ const MonthlyDeforestationAlert: React.FC<MonthlyDeforestationAlertProps> = ({
             <InfoHeader
               title={t("monthly_deforestation_alert")}
               description={t("monthly_deforestation_summary", {
-                ultimoMes,
+                ultimoMes: t(ultimoMes),
                 alertaMensalDesmatamentoUltimoMesHa,
                 selectedEsfera: selectedEsfera ?? "",
               })}
