@@ -72,6 +72,10 @@ const extents = {
 };
 
 const { useBreakpoint } = Grid;
+type FeatureSelectionClick = {
+  id: number;
+  pixel: Pixel;
+};
 
 export const Mapa = () => {
   const breakpoints = useBreakpoint();
@@ -89,7 +93,10 @@ export const Mapa = () => {
     camada !== undefined && mapData?.layersLegends
       ? mapData?.layersLegends[Camadas[camada]]
       : defaultLegend;
-  const [pixelClicked, setPixelClicked] = useState<Pixel | null>(null);
+  const [pixelClicked, setPixelClicked] =
+    useState<FeatureSelectionClick | null>(null);
+  const lastMapClickRef = useRef<{ at: number; pixel: Pixel } | null>(null);
+  const selectionClickIdRef = useRef(0);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -154,12 +161,37 @@ export const Mapa = () => {
       noDefaultControls
       projection={projection}
       ref={mapRef}
+      onMoveStart={() => {
+        // Evita que um arrasto deixe "metade" de um duplo clique pendente.
+        lastMapClickRef.current = null;
+      }}
       onRenderComplete={(event) => {
         setMapCenter(event.target.getView().getCenter());
         setMapZoom(event.target.getView().getZoom());
       }}
-      onDblClick={(event) => {
-        setPixelClicked(event.pixel);
+      onClick={(event) => {
+        const now = Date.now();
+        const currentPixel = [event.pixel[0], event.pixel[1]] as Pixel;
+        const lastClick = lastMapClickRef.current;
+
+        const isWithinDoubleClickWindow =
+          !!lastClick && now - lastClick.at <= 300;
+        const isSameArea =
+          !!lastClick &&
+          Math.abs(lastClick.pixel[0] - currentPixel[0]) <= 5 &&
+          Math.abs(lastClick.pixel[1] - currentPixel[1]) <= 5;
+
+        if (isWithinDoubleClickWindow && isSameArea) {
+          selectionClickIdRef.current += 1;
+          setPixelClicked({
+            id: selectionClickIdRef.current,
+            pixel: currentPixel,
+          });
+          lastMapClickRef.current = null;
+          return;
+        }
+
+        lastMapClickRef.current = { at: now, pixel: currentPixel };
       }}
     >
       <RLayerTile url={urlTiles} />

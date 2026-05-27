@@ -8,6 +8,7 @@ export const Route = createFileRoute('/')({
     // component: Mapa,
     loaderDeps: ({ search: { camada, esfera, estados, fpnd } }) => ({ camada, esfera, estados, fpnd}),
     loader: ({ deps: { camada, esfera, estados, fpnd } }) => getInfoData(camada, esfera, estados ,fpnd),
+    shouldReload: true,
     validateSearch: z.object({
         camada: z.number().optional(),
         esfera: z.number().optional(),

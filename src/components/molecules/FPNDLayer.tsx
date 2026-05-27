@@ -4,7 +4,7 @@ import { Map, Feature } from "ol";
 import { Geometry } from "ol/geom";
 import { MVT } from "ol/format";
 import { RLayerVectorTile } from "rlayers";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import { Pixel } from "ol/pixel";
 import { Modal, Button } from "antd";
 
@@ -21,7 +21,7 @@ type FPNDLayerProps = {
   camada: string;
   esfera: string;
   estados: Array<string>;
-  pixelClicked: Pixel | null;
+  pixelClicked: { id: number; pixel: Pixel } | null;
   zIndex?: number;
 };
 
@@ -34,14 +34,18 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
   pixelClicked,
 }) => {
   const navigate = useNavigate();
+  const router = useRouter();
   const { t } = useTranslation();
   const fpndStyle = useRStyle();
   const layerRef = useRef<any>(null);
+  const lastProcessedClickIdRef = useRef<number | null>(null);
   const [selectedFeatureCode, setSelectedFeatureCode] = useState<string | null>(
     null
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [pendingFeatureCode, setPendingFeatureCode] = useState(null);
+  const [pendingFeatureCode, setPendingFeatureCode] = useState<string | null>(
+    null
+  );
 
   const data = mapData?.data;
 
@@ -59,13 +63,15 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
 
   const getColor = useCallback(
     (codigo: string, baseColor: string, highlightColor: string) => {
-      return selectedFeatureCode === codigo
+      const code = String(codigo);
+
+      return selectedFeatureCode === code
         ? highlightColor
         : camada === ""
-          ? baseColor
-          : data[codigo] && data[codigo][`${camada}Color`]
-            ? data[codigo][`${camada}Color`]
-            : baseColor;
+        ? baseColor
+        : data[code] && data[code][`${camada}Color`]
+        ? data[code][`${camada}Color`]
+        : baseColor;
     },
     [camada, data, selectedFeatureCode]
   );
@@ -114,39 +120,60 @@ export const FPNDLayer: FC<FPNDLayerProps> = ({
   }, [camada, esfera, estados, selectedFeatureCode]);
 
   useEffect(() => {
-    navigate({
-      search: (prev: any) => ({ ...prev, fpnd: selectedFeatureCode || undefined }),
-    } as any);
-  }, [selectedFeatureCode]);
+    const updateSelection = async () => {
+      await navigate({
+        search: (prev: any) => ({
+          ...prev,
+          fpnd: selectedFeatureCode || undefined,
+        }),
+      } as any);
+
+      await router.invalidate();
+    };
+
+    void updateSelection();
+  }, [navigate, router, selectedFeatureCode]);
 
   useEffect(() => {
-    if (pixelClicked) {
-      const map: Map = layerRef.current.context.map;
-      const features = map.getFeaturesAtPixel(pixelClicked);
-      if (features.length > 0) {
-        const feature = features[0];
-        const featureCode = feature.get("codigo");
-        const featureUF = feature.get("uf");
-        const featureEsfera = feature.get("esfera");
-        if (
-          (esfera !== "" && esfera !== featureEsfera) ||
-          (estados.length && !estados.includes(featureUF))
-        ) {
-          setSelectedFeatureCode(null);
-          return;
-        }
-        if (!pendingFeatureCode || featureCode !== pendingFeatureCode) {
-          setPendingFeatureCode(featureCode);
-          setIsModalVisible(true);
-        } else {
-          setSelectedFeatureCode(featureCode);
-        }
-      } else {
+    if (!pixelClicked) return;
+    if (lastProcessedClickIdRef.current === pixelClicked.id) return;
+
+    lastProcessedClickIdRef.current = pixelClicked.id;
+
+    const map: Map = layerRef.current.context.map;
+    const features = map.getFeaturesAtPixel(pixelClicked.pixel);
+
+    if (features.length > 0) {
+      const feature = features[0];
+      const featureCode = String(feature.get("codigo") ?? "");
+      const featureUF = feature.get("uf");
+      const featureEsfera = feature.get("esfera");
+
+      if (!featureCode) {
         setSelectedFeatureCode(null);
         setPendingFeatureCode(null);
+        return;
       }
+
+      if (
+        (esfera !== "" && esfera !== featureEsfera) ||
+        (estados.length && !estados.includes(featureUF))
+      ) {
+        setSelectedFeatureCode(null);
+        return;
+      }
+
+      if (!pendingFeatureCode || featureCode !== pendingFeatureCode) {
+        setPendingFeatureCode(featureCode);
+        setIsModalVisible(true);
+      } else {
+        setSelectedFeatureCode(featureCode);
+      }
+    } else {
+      setSelectedFeatureCode(null);
+      setPendingFeatureCode(null);
     }
-  }, [pixelClicked, estados, esfera]);
+  }, [pixelClicked, estados, esfera, pendingFeatureCode]);
 
   return (
     <>

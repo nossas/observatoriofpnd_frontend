@@ -1,7 +1,7 @@
 .ol-zoom {
     top: auto;
     bottom: 12px;
-    left: 8px;
+    left: 235px;
 }
 
 .ol-zoom .ol-zoom-in {
@@ -27,7 +27,7 @@
 .ajuda {
     position: absolute;
     bottom: 12px;
-    left: 44px;
+    left: 273px;
     display: inline-flex;
     gap: 8px;
 }
@@ -41,7 +41,7 @@
     position: absolute;
     top: auto;
     bottom: 12px;
-    right: 386px;
+    left: 8px;
     border-radius: 10px;  
 
 }
