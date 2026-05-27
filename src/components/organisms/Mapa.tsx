@@ -1,4 +1,4 @@
-import { Ajuda, Entenda, FPNDLayer, Legenda } from "components/molecules";
+import { Ajuda, Entenda, FPNDLayer, Legenda, AmazonBiomeBorderLayer } from "components/molecules";
 import { Grid } from "antd";
 import { RControl, RLayerTile, RMap } from "rlayers";
 import { useBusiness } from "services/business";
@@ -195,6 +195,8 @@ export const Mapa = () => {
       }}
     >
       <RLayerTile url={urlTiles} />
+
+      <AmazonBiomeBorderLayer zIndex={6} />
 
       <FPNDLayer
         zIndex={7}

@@ -1,0 +1,148 @@
+{
+    "main": {
+        "header": {
+            "title": "Entenda",
+            "description": "Florestas Públicas Não Destinadas (FPND) são áreas de florestas que pertencem ao Estado, mas que ainda não tiveram uso definido. Elas são as áreas mais desprotegidas dos biomas brasileiros."
+        },
+        "body": [
+            {
+                "text": "Há **{{entendaFpndAreaTotalHa}}** de hectares de florestas públicas não-destinadas {{esfera}} presentes n{{recortePrefixo}} {{recorteNome}}."
+            },
+            {
+                "text": "Isso equivale a **{{entendaFpndEquivalenciaFutebolQtd}}** de campos de futebol.",
+                "highlighted": true,
+                "icon": "campoDeFutebol"
+            }
+        ]
+    },
+    "details": [
+        {
+            "header": {
+                "title": "Florestas estaduais x federais",
+                "description": "As Florestas Públicas Não Destinadas (FPND) estão sob jurisdição dos estados ou do governo federal.",
+                "icon": "florestasEstaduaisxFederais"
+            },
+            "body": [
+                {
+                    "text": "N{{recortePrefixo}} {{recorteNome}}, **{{categoriaFpndEstadualAreaPer}}%** das FPND são estaduais, enquanto as federais representam **{{categoriaFpndFederalAreaPer}}%** do total de florestas.",
+                    "highlighted": true
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Alerta mensal de desmatamento",
+                "description": "No mês de {{ultimoMes}} foram desmatados **{{alertaMensalDesmatamentoUltimoMesHa}}** hectares em FPND {{esfera}}.",
+                "icon": "alertaMensalDeDesmatamento"
+            },
+            "body": [
+                {
+                    "text": "**{{alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioPer}}%** {{alertaMensalDesmatamentoComparacaoMesmoMesAnoAnterioDirecao}} em relação ao mesmo mês do ano anterior",
+                    "highlighted": true,
+                    "icon": "grafico"
+                },
+                {
+                    "type": "GraficoAlertaDesmatamento"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Desmatamento",
+                "description": "A área desmatada total nas FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} é de **{{desmatamentoAreaHa}}** de hectares",
+                "icon": "desmatamento"
+            },
+            "body": [
+                {
+                    "text": "Possui **{{desmatamentoFlorestaNativaHa}}** de hectares de floresta nativa.",
+                    "highlighted": true,
+                    "icon": "arvore"
+                },
+                {
+                    "type": "GraficoDesmatamentoRecorte"
+                },
+                {
+                    "text": "A área desmatada n{{recortePrefixo}} {{recorteNome}} {{verboDesmatamento}} **{{desmatamentoComparacaoPrimeiroAnoUltimoAnoPer}}%** de {{primeiroAno}} a {{ultimoAno}}."
+                },
+                {
+                    "type": "GraficoDesmatamentoAcumulado"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Estoque de carbono",
+                "description": "Estoque de carbono é o carbono que é retirado da atmosfera e armazenado em organismos vivos, no solo e em rochas.",
+                "icon": "estoqueDeCarbono"
+            },
+            "body": [
+                {
+                    "text": "As FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} estocam **{{estoqueCarbonoTon}}** de toneladas de carbono."
+                },
+                {
+                    "text": "Isso equivale a **{{estoqueCarbonoEquivalenciaPesoTon}}** de toneladas de CO2 evitados na atmosfera.",
+                    "highlighted": true,
+                    "icon": "co2"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Riqueza de espécies ameaçadas",
+                "description": "As FPND {{esfera}} n{{recortePrefixo}} **{{recorteNome}}** abrigam em média **{{#if esfera=='Federal'}}federal{{else}}lalala** espécies ameaçadas da fauna e flora amazônica.",
+                "icon": "biodiversidade"
+            },
+            "body": [
+                {
+                    "text": "N{{recortePrefixo}} **{{recorteNome}}**, a riqueza média das FPND é de **{{biodiversidadeFpndTodasMedia}}** espécies ameaçadas.",
+                    "highlighted": true,
+                    "icon": "biodiversidade"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "CAR (Cadastro Ambiental Rural)",
+                "description": "Há **{{carSobreposicaoFpndAreaHa}}** de hectares de Cadastro Ambiental Rural (CAR) **irregulares**, sobrepostos em FPND {{esfera}} no estado.",
+                "icon": "car"
+            },
+            "body": [
+                {
+                    "text": "**{{carSobreposicaoFpndAreaPer}}%** da área de FPND n{{recortePrefixo}} {{recorteNome}} possui CAR sobrepostos. Isso equivale a **{{carSobreposicaoFpndEquivalenciaFutebolQtd}}** de campos de futebol.",
+                    "highlighted": true,
+                    "icon": "campoDeFutebol"
+                },
+                {
+                    "type": "AlertaGrilagem",
+                    "icon": "alertaGrilagem"
+                },
+                {
+                    "text": "A presença de CAR em áreas florestais podem indicar grilagem, ameaçando a conservação desses ecossistemas vitais."
+                },
+                {
+                    "text": "Com base em estudo do IPAM e ABRAMPA, 44% dos casos de sobreposição de CAR em terras públicas referem-se a áreas com mais de 1.500 hectares, não se tratando de pequenas ocupações para a agricultura familiar ou de subsistência, mas possivelmente  grupos que possuem financiamento e organização."
+                },
+                {
+                    "text": "Nas florestas públicas não destinadas d{{recortePrefixo}} {{recorteNome}}, para cada **{{carComparacaoDesmatamento}}** hectares de CAR, temos 1 hectare de desmatamento."
+                },
+                {
+                    "type": "GraficoCARSobreposicao"
+                }
+            ]
+        },
+        {
+            "header": {
+                "title": "Mineração",
+                "description": "A área de mineração total (industrial e garimpo) em 2022 nas FPNDs n{{recortePrefixo}} **{{recorteNome}}** corresponde a **{{mineracaoSobreposicaoFpndAreaHa}}** hectares.",
+                "icon": "mineracao"
+            },
+            "body": [
+                {
+                    "text": "Isso equivale a **{{mineracaoSobreposicaoFpndEquivalenciaFutebolQtd}}** campos de futebol.",
+                    "highlighted": true,
+                    "icon": "campoDeFutebol"
+                }
+            ]
+        }
+    ]
+}

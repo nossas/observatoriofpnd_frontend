@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "label": "Acre",
+            "value": "AC"
+        },
+        {
+            "label": "Amapá",
+            "value": "AP"
+        },
+        {
+            "label": "Amazonas",
+            "value": "AM"
+        },
+        {
+            "label": "Maranhão",
+            "value": "MA"
+        },
+        {
+            "label": "Mato Grosso ",
+            "value": "MT"
+        },
+        {
+            "label": "Pará",
+            "value": "PA"
+        },
+        {
+            "label": "Rondônia",
+            "value": "RO"
+        },
+        {
+            "label": "Roraima",
+            "value": "RR"
+        },
+        {
+            "label": "Tocantins",
+            "value": "TO"
+        }
+    ]
+}
