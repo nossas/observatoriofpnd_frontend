@@ -1,5 +1,5 @@
-import { FC, useEffect } from "react";
-import { RLayerVector, RFeature } from "rlayers";
+import { FC, useRef } from "react";
+import { RLayerVector } from "rlayers";
 import { RStyle, RStroke } from "rlayers/style";
 import GeoJSON from "ol/format/GeoJSON";
 import VectorSource from "ol/source/Vector";
@@ -8,22 +8,19 @@ type AmazonBiomeBorderLayerProps = {
   zIndex?: number;
 };
 
-const amazonBiomeSource = new VectorSource({
-  format: new GeoJSON(),
-  url: "/data/amazon_biome_border.json",
-});
-
 export const AmazonBiomeBorderLayer: FC<AmazonBiomeBorderLayerProps> = ({
   zIndex = 5,
 }) => {
-  useEffect(() => {
-    // Garante que a fonte foi carregada
-    amazonBiomeSource.getFeatures();
-  }, []);
+  const sourceRef = useRef(
+    new VectorSource({
+      format: new GeoJSON(),
+      url: "/data/amazon_biome_border.json",
+    })
+  );
 
   return (
     <RLayerVector
-      source={amazonBiomeSource}
+      source={sourceRef.current}
       zIndex={zIndex}
       style={
         <RStyle>
