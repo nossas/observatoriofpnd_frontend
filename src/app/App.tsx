@@ -3,6 +3,9 @@ import { ConfigProvider } from 'antd';
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from 'routeTree.gen' // Import the generated route tree
 import { customTheme } from './theme'
+import { TourProvider } from 'services/tour'
+import { MapLoadingProvider } from 'services/mapLoading'
+import { GuidedTour, MapLoadingOverlay } from 'components/molecules'
 import 'assets/styles/global.css'
 
 // Create a new router instance
@@ -20,9 +23,15 @@ declare module '@tanstack/react-router' {
 const App = () => {
     return (
         <ConfigProvider theme={customTheme}>
-            <BusinessProvider>
-                <RouterProvider router={router} />
-            </BusinessProvider>
+            <MapLoadingProvider>
+                <TourProvider>
+                    <BusinessProvider>
+                        <RouterProvider router={router} />
+                        <GuidedTour />
+                        <MapLoadingOverlay />
+                    </BusinessProvider>
+                </TourProvider>
+            </MapLoadingProvider>
         </ConfigProvider>
     )
 }

@@ -1,0 +1,60 @@
+/**
+ * Estilos para o modal inicial do tour
+ */
+
+.modal {
+  /* Garante que o modal esteja no topo */
+}
+
+.modal :global(.ant-modal-content) {
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon {
+  font-size: 48px;
+  color: #1890ff;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+}
+
+.description {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.actions :global(.ant-btn) {
+  min-width: 140px;
+  height: 40px;
+  font-size: 14px;
+}

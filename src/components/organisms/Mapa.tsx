@@ -5,6 +5,7 @@ import { useBusiness } from "services/business";
 import { useEffect, useRef, useState } from "react";
 import { useSearch } from "@tanstack/react-router";
 import { Camadas, Esferas } from "services/data";
+import { useMapLoading } from "services/mapLoading";
 import "ol/ol.css";
 import "rlayers/control/layers.css";
 import "assets/styles/mapa.css";
@@ -79,6 +80,7 @@ type FeatureSelectionClick = {
 
 export const Mapa = () => {
   const breakpoints = useBreakpoint();
+  const { setMapLoaded } = useMapLoading();
   const {
     entendaIsOpen,
     mapCenter,
@@ -167,6 +169,8 @@ export const Mapa = () => {
       }}
       onRenderComplete={(event) => {
         setMapCenter(event.target.getView().getCenter());
+        // Marca o mapa como carregado para exibir o tour
+        setMapLoaded(true);
         setMapZoom(event.target.getView().getZoom());
       }}
       onClick={(event) => {

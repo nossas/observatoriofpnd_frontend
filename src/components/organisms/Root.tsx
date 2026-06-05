@@ -22,7 +22,7 @@ export const Root = () => {
     return (
         <Layout style={{minHeight: '100vh', maxHeight: '100%'}}>
             { !breakpoints.xs && (//sider aparecera ao lado esquerdo se e apenas se a tela nao for mobile
-                <Sider breakpoint='xs' collapsible trigger={null} collapsed={collapsed} collapsedWidth={50} width={374} theme="light">
+                <Sider data-tour="explore-panel" breakpoint='xs' collapsible trigger={null} collapsed={collapsed} collapsedWidth={50} width={374} theme="light">
                     <Flex justify="space-between" align="center" style={{padding: "12px"}}>
                         <Flex gap={10}>
                             {!collapsed && (
@@ -83,7 +83,7 @@ export const Root = () => {
             )}
 
             <Layout style={{ display: 'flex', flexDirection: 'column', minHeight:'auto'}}>
-                <Content style={{ display: 'flex', flex: 1 }}>
+                <Content data-tour="map-container" style={{ display: 'flex', flex: 1 }}>
                     <div style={{ alignItems: 'center', display: 'flex', flex: 1, justifyContent: 'center' }}>
                         <Outlet />
                     </div>
