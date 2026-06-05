@@ -13,10 +13,11 @@ import {
     VectorMineracao,
     Wind,
     XDiamondFill,
+    FireFill,
 } from 'components/atoms'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { InfoContent, InfoHeader, Markdown } from 'components/atoms'
-import { GraficoAlertaDesmatamento, GraficoCARSobreposicao, GraficoDesmatamentoAcumulado, GraficoDesmatamentoRecorte } from '.'
+import { GraficoAlertaDesmatamento, GraficoCARSobreposicao, GraficoDesmatamentoAcumulado, GraficoDesmatamentoRecorte, GraficoAlertaFogo } from '.'
 import { useCallback } from 'react'
 import { useLoaderData } from '@tanstack/react-router'
 import { substitute } from 'services/utils'
@@ -32,6 +33,7 @@ const headerIcons = {
     biodiversidade: <BugFill/>,
     car: <SignPostFill/>,
     mineracao: <VectorMineracao/>,
+    alertaMensalDeFogo: <FireFill/>,
 }
 
 const highlightedIcons = {
@@ -109,6 +111,12 @@ export const EntendaMobile = () => {
                                                                     if(infoData && infoData.alertaMensalGraficoHistoricoDesmatamento)
                                                                     {
                                                                         component = <GraficoAlertaDesmatamento key={key} data={infoData.alertaMensalGraficoHistoricoDesmatamento}/>
+                                                                    }
+                                                                    break
+                                                                case 'GraficoAlertaFogo':
+                                                                    if(infoData && infoData.alertaMensalGraficoHistoricoFogo)
+                                                                    {
+                                                                        component = <GraficoAlertaFogo key={key} data={infoData.alertaMensalGraficoHistoricoFogo}/>
                                                                     }
                                                                     break
                                                                 case 'GraficoCARSobreposicao':

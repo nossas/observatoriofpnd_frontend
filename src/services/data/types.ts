@@ -31,4 +31,5 @@ export enum Actions {
     Biodiversidade,
     Car,
     Mineracao,
+    Fogo,
 }

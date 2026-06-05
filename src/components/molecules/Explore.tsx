@@ -6,6 +6,8 @@ import {
   DiamondFill,
   ExclamationTriangle,
   ExclamationTriangleFill,
+  Fire,
+  FireFill,
   SignPost,
   SignPostFill,
   TreeFill,
@@ -94,6 +96,14 @@ export const Explore: FC<ExploreProps> = ({
       layer: Camadas.mining,
       type: "ameacas",
       action: Actions.Mineracao,
+    },
+    {
+      icon:
+        selectedAction === 5 ? <FireFill /> : <Fire />,
+      label: t('fire'),
+      layer: Camadas.deforastationLast10Years, // Uses same layer as deforestation
+      type: "ameacas",
+      action: Actions.Fogo,
     },
   ];
 

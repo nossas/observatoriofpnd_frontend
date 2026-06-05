@@ -12,6 +12,7 @@ import {
   VectorMineracao,
   Wind,
   XDiamondFill,
+  FireFill,
 } from "components/atoms";
 
 import {
@@ -25,6 +26,7 @@ import { useBusiness } from "services/business";
 import { Esferas } from "services/data";
 import ForestComparison from "./Items/ForestComparison";
 import MonthlyDeforestationAlert from "./Items/MonthlyDeforestationAlert";
+import MonthlyFireAlert from "./Items/MonthlyFireAlert";
 import Deforestation from "./Items/Deforestation";
 import CarbonStock from "./Items/CarbonStock";
 import SpeciesRichness from "./Items/SpeciesRichness";
@@ -45,6 +47,7 @@ export const headerIcons = {
   biodiversidade: <BugFill />,
   car: <SignPostFill />,
   mineracao: <VectorMineracao />,
+  alertaMensalDeFogo: <FireFill />,
 };
 
 export const highlightedIcons = {
@@ -153,12 +156,16 @@ export const Entenda = () => {
                       )}
 
                       {(typeof camada === "undefined" ||
-                        Number(camada) === 2) && (
+                        Number(camada) === 2 || searchParams.camada === undefined) && (
                         <>
                           <MonthlyDeforestationAlert infoData={newInfoData} searchParams={searchParams} />
 
                           <Deforestation infoData={newInfoData} searchParams={searchParams} />
                         </>
+                      )}
+
+                      {(Number(camada) === 2 || searchParams.camada === undefined) && (
+                        <MonthlyFireAlert infoData={newInfoData} searchParams={searchParams} />
                       )}
 
                       {(typeof camada === "undefined" ||

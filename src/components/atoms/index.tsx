@@ -15,6 +15,8 @@ export {
     ExclamationTriangle,
     ExclamationTriangleFill,
     Filter,
+    Fire,
+    FireFill,
     GlobeAmericas,
     GraphUpArrow,
     InfoCircleFill,
