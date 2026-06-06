@@ -176,7 +176,7 @@ export const Entenda = () => {
                           </>
                         )}
 
-                        {(Number(camada) === 2 || Number(camada) === 7 || searchParams.camada === undefined) && (
+                        {(Number(camada) === 7 || searchParams.camada === undefined) && (
                           <MonthlyFireAlert
                             infoData={newInfoData}
                             searchParams={searchParams}

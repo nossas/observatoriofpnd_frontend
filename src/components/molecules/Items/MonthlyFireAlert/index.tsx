@@ -41,13 +41,14 @@ const MonthlyFireAlert: React.FC<MonthlyFireAlertProps> = ({
     <Collapse
       bordered={false}
       expandIconPosition="end"
+      style={{ background: "rgba(0, 0, 0, 0.05)" }}
       items={[
         {
           label: (
             <InfoHeader
               title={t("monthly_fire_alert")}
               description={t("monthly_fire_summary", {
-                ultimoMesFogo,
+                ultimoMesFogo: t(ultimoMesFogo),
                 alertaMensalFogoUltimoMesHa,
                 selectedEsfera: selectedEsfera ?? "",
               })}
@@ -70,6 +71,7 @@ const MonthlyFireAlert: React.FC<MonthlyFireAlertProps> = ({
                     noHasData
                       ? t("no_data_to_display")
                       : t("fire_monthly_comparison_previous_year", {
+                          ultimoMesFogo: t(ultimoMesFogo),
                           alertaMensalFogoComparacaoMesmoMesAnoAnterioPer,
                           alertaMensalFogoComparacaoMesmoMesAnoAnterioDirecao,
                         })
