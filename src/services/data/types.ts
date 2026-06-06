@@ -7,6 +7,7 @@ export enum Camadas {
     speciesDiversity,
     carOverlap,
     mining,
+    fogo,
 }
 
 export enum Esferas {
@@ -31,4 +32,5 @@ export enum Actions {
     Biodiversidade,
     Car,
     Mineracao,
+    Fogo,
 }

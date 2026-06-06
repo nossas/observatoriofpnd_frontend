@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import UnderstandContent from "./Items/UnderstandContent";
 import ForestComparison from "./Items/ForestComparison";
 import MonthlyDeforestationAlert from "./Items/MonthlyDeforestationAlert";
+import MonthlyFireAlert from "./Items/MonthlyFireAlert";
 import Deforestation from "./Items/Deforestation";
 import CarbonStock from "./Items/CarbonStock";
 import SpeciesRichness from "./Items/SpeciesRichness";
@@ -57,7 +58,7 @@ export const EntendaMobile = () => {
                         )}
 
                         {(typeof camada === "undefined" ||
-                          Number(camada) === 2) && (
+                          Number(camada) === 2 || searchParams.camada === undefined) && (
                           <>
                             <MonthlyDeforestationAlert
                               infoData={newInfoData}
@@ -69,6 +70,13 @@ export const EntendaMobile = () => {
                               searchParams={searchParams}
                             />
                           </>
+                        )}
+
+                        {(Number(camada) === 2 || Number(camada) === 7 || searchParams.camada === undefined) && (
+                          <MonthlyFireAlert
+                            infoData={newInfoData}
+                            searchParams={searchParams}
+                          />
                         )}
 
                         {(typeof camada === "undefined" ||

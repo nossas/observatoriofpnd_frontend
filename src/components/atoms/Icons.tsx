@@ -16,7 +16,9 @@ import diamondFillSvg from 'assets/svg/diamond-fill.svg?react'
 import diamondSvg from 'assets/svg/diamond.svg?react'
 import exclamationTriangleFillSvg from 'assets/svg/exclamation-triangle-fill.svg?react'
 import exclamationTriangleSvg from 'assets/svg/exclamation-triangle.svg?react'
-import FilterSvg from 'assets/svg/filter.svg?react'
+import filterSvg from 'assets/svg/filter.svg?react'
+import fireFillSvg from 'assets/svg/fire-fill.svg?react'
+import fireSvg from 'assets/svg/fire.svg?react'
 import globeAmericasSvg from 'assets/svg/globe-americas.svg?react'
 import graphUpArrowSvg from 'assets/svg/graph-up-arrow.svg?react'
 import graphDownArrowSvg from 'assets/svg/graph-down-arrow.svg?react'
@@ -86,7 +88,13 @@ export const ExclamationTriangle = ({style = {}}) => (
     <Icon component={exclamationTriangleSvg} style={style}/>
 )
 export const Filter = ({style = {}}) => (
-    <Icon component={FilterSvg} style={style}/>
+    <Icon component={filterSvg} style={style}/>
+)
+export const FireFill = ({style = {}}) => (
+    <Icon component={fireFillSvg} style={style}/>
+)
+export const Fire = ({style = {}}) => (
+    <Icon component={fireSvg} style={style}/>
 )
 export const GlobeAmericas = ({style = {}}) => (
     <Icon component={globeAmericasSvg} style={style}/>

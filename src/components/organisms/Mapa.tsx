@@ -93,7 +93,7 @@ export const Mapa = () => {
   const mapRef = useRef<any>(null);
   const legendData =
     camada !== undefined && mapData?.layersLegends
-      ? mapData?.layersLegends[Camadas[camada]]
+      ? (mapData?.layersLegends[Camadas[camada]] ?? defaultLegend)
       : defaultLegend;
   const [pixelClicked, setPixelClicked] =
     useState<FeatureSelectionClick | null>(null);

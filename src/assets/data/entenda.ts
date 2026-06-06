@@ -51,6 +51,24 @@ export const entenda = {
     },
     {
       header: {
+        title: "Alerta mensal de fogo",
+        description:
+          "No mês de {{ultimoMesFogo}} foram queimados **{{alertaMensalFogoUltimoMesHa}}** hectares em FPND {{esfera}}.",
+        icon: "alertaMensalDeFogo",
+      },
+      body: [
+        {
+          text: "**{{alertaMensalFogoComparacaoMesmoMesAnoAnterioPer}}%** {{alertaMensalFogoComparacaoMesmoMesAnoAnterioDirecao}} em relação ao mesmo mês do ano anterior",
+          highlighted: true,
+          icon: "grafico",
+        },
+        {
+          type: "GraficoAlertaFogo",
+        },
+      ],
+    },
+    {
+      header: {
         title: "Desmatamento",
         description:
           "A área desmatada total nas FPND {{esfera}} n{{recortePrefixo}} {{recorteNome}} é de **{{desmatamentoAreaHa}}** de hectares",
